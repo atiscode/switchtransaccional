@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SafiBDDParametrosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ComprobanteMasivo">
+          <Key>
+            <PropertyRef Name="ComprobanteId" />
+          </Key>
+          <Property Name="ComprobanteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Xml" Type="xml" Nullable="false" />
+          <Property Name="TipoComprobante" Type="int" Nullable="false" />
+          <Property Name="CodigoRelacionId" Type="int" Nullable="false" />
+          <Property Name="CodigoRelacionIdReal" Type="int" Nullable="false" />
+          <Property Name="EstadoComprobanteId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SeverBdd" Type="varchar" MaxLength="50" />
+          <Property Name="Bdd" Type="varchar" MaxLength="50" />
+          <Property Name="UsuarioBdd" Type="varchar" MaxLength="50" />
+          <Property Name="PasswordBdd" Type="varchar" MaxLength="50" />
+          <Property Name="Ruc" Type="varchar" MaxLength="13" />
+          <Property Name="MensajeProceso" Type="varchar(max)" />
+          <Property Name="Ano" Type="int" />
+        </EntityType>
+        <EntityType Name="ComprobanteMasivoHistorial">
+          <Key>
+            <PropertyRef Name="ComprobanteId" />
+          </Key>
+          <Property Name="ComprobanteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Xml" Type="xml" Nullable="false" />
+          <Property Name="TipoComprobante" Type="int" Nullable="false" />
+          <Property Name="CodigoRelacionId" Type="int" Nullable="false" />
+          <Property Name="CodigoRelacionIdReal" Type="int" Nullable="false" />
+          <Property Name="EstadoComprobanteId" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SeverBdd" Type="varchar" MaxLength="50" />
+          <Property Name="Bdd" Type="varchar" MaxLength="50" />
+          <Property Name="UsuarioBdd" Type="varchar" MaxLength="50" />
+          <Property Name="PasswordBdd" Type="varchar" MaxLength="50" />
+          <Property Name="Ruc" Type="varchar" MaxLength="13" />
+          <Property Name="MensajeProceso" Type="varchar(max)" />
+          <Property Name="Ano" Type="int" />
+        </EntityType>
+        <EntityType Name="DocumentoElectronico">
+          <Key>
+            <PropertyRef Name="CodigoId" />
+          </Key>
+          <Property Name="CodigoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaveAcceso" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentoId" Type="varchar" MaxLength="50" />
+          <Property Name="EstadoRecepcion" Type="varchar" MaxLength="15" />
+          <Property Name="FechaEmision" Type="date" />
+          <Property Name="FechaAutorizacion" Type="date" />
+          <Property Name="NumeroAutorizacion" Type="varchar" MaxLength="100" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="8000" />
+          <Property Name="TipoDocumento" Type="varchar" MaxLength="2" />
+          <Property Name="EmpresaId" Type="int" />
+          <Property Name="CodigoRelacionId" Type="int" />
+          <Property Name="CodigoRelacionIdReal" Type="int" />
+          <Property Name="PathCertificado" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="BDD" Type="varchar" MaxLength="30" />
+          <Property Name="Usuario" Type="varchar" MaxLength="15" />
+          <Property Name="Clave" Type="varchar" MaxLength="15" />
+          <Property Name="EstadoDocumentoId" Type="int" />
+          <Property Name="FirmadorElectronicoId" Type="int" />
+          <Property Name="DocumentoXml" Type="xml" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EstadoComprobanteMasivo">
+          <Key>
+            <PropertyRef Name="CodigoId" />
+          </Key>
+          <Property Name="CodigoId" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SafiBDDParametrosModelStoreContainer">
+          <EntitySet Name="ComprobanteMasivo" EntityType="Self.ComprobanteMasivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComprobanteMasivoHistorial" EntityType="Self.ComprobanteMasivoHistorial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentoElectronico" EntityType="Self.DocumentoElectronico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoComprobanteMasivo" EntityType="Self.EstadoComprobanteMasivo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SafiBDDParametrosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ComprobanteMasivo">
+          <Key>
+            <PropertyRef Name="ComprobanteId" />
+          </Key>
+          <Property Name="ComprobanteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Xml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoComprobante" Type="Int32" Nullable="false" />
+          <Property Name="CodigoRelacionId" Type="Int32" Nullable="false" />
+          <Property Name="CodigoRelacionIdReal" Type="Int32" Nullable="false" />
+          <Property Name="EstadoComprobanteId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SeverBdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioBdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordBdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ruc" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeProceso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ano" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ComprobanteMasivoHistorial">
+          <Key>
+            <PropertyRef Name="ComprobanteId" />
+          </Key>
+          <Property Name="ComprobanteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Xml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoComprobante" Type="Int32" Nullable="false" />
+          <Property Name="CodigoRelacionId" Type="Int32" Nullable="false" />
+          <Property Name="CodigoRelacionIdReal" Type="Int32" Nullable="false" />
+          <Property Name="EstadoComprobanteId" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SeverBdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioBdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordBdd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ruc" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeProceso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ano" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DocumentoElectronico">
+          <Key>
+            <PropertyRef Name="CodigoId" />
+          </Key>
+          <Property Name="CodigoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaveAcceso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentoId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoRecepcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEmision" Type="DateTime" Precision="0" />
+          <Property Name="FechaAutorizacion" Type="DateTime" Precision="0" />
+          <Property Name="NumeroAutorizacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <Property Name="CodigoRelacionId" Type="Int32" />
+          <Property Name="CodigoRelacionIdReal" Type="Int32" />
+          <Property Name="PathCertificado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BDD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoDocumentoId" Type="Int32" />
+          <Property Name="FirmadorElectronicoId" Type="Int32" />
+          <Property Name="DocumentoXml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EstadoComprobanteMasivo">
+          <Key>
+            <PropertyRef Name="CodigoId" />
+          </Key>
+          <Property Name="CodigoId" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SafiBDDParametrosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ComprobanteMasivo" EntityType="Self.ComprobanteMasivo" />
+          <EntitySet Name="ComprobanteMasivoHistorial" EntityType="Self.ComprobanteMasivoHistorial" />
+          <EntitySet Name="DocumentoElectronico" EntityType="Self.DocumentoElectronico" />
+          <EntitySet Name="EstadoComprobanteMasivo" EntityType="Self.EstadoComprobanteMasivo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SafiBDDParametrosModelStoreContainer" CdmEntityContainer="SafiBDDParametrosEntities">
+          <EntitySetMapping Name="ComprobanteMasivo">
+            <EntityTypeMapping TypeName="SafiBDDParametrosModel.ComprobanteMasivo">
+              <MappingFragment StoreEntitySet="ComprobanteMasivo">
+                <ScalarProperty Name="ComprobanteId" ColumnName="ComprobanteId" />
+                <ScalarProperty Name="Xml" ColumnName="Xml" />
+                <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
+                <ScalarProperty Name="CodigoRelacionId" ColumnName="CodigoRelacionId" />
+                <ScalarProperty Name="CodigoRelacionIdReal" ColumnName="CodigoRelacionIdReal" />
+                <ScalarProperty Name="EstadoComprobanteId" ColumnName="EstadoComprobanteId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SeverBdd" ColumnName="SeverBdd" />
+                <ScalarProperty Name="Bdd" ColumnName="Bdd" />
+                <ScalarProperty Name="UsuarioBdd" ColumnName="UsuarioBdd" />
+                <ScalarProperty Name="PasswordBdd" ColumnName="PasswordBdd" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="MensajeProceso" ColumnName="MensajeProceso" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComprobanteMasivoHistorial">
+            <EntityTypeMapping TypeName="SafiBDDParametrosModel.ComprobanteMasivoHistorial">
+              <MappingFragment StoreEntitySet="ComprobanteMasivoHistorial">
+                <ScalarProperty Name="ComprobanteId" ColumnName="ComprobanteId" />
+                <ScalarProperty Name="Xml" ColumnName="Xml" />
+                <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
+                <ScalarProperty Name="CodigoRelacionId" ColumnName="CodigoRelacionId" />
+                <ScalarProperty Name="CodigoRelacionIdReal" ColumnName="CodigoRelacionIdReal" />
+                <ScalarProperty Name="EstadoComprobanteId" ColumnName="EstadoComprobanteId" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SeverBdd" ColumnName="SeverBdd" />
+                <ScalarProperty Name="Bdd" ColumnName="Bdd" />
+                <ScalarProperty Name="UsuarioBdd" ColumnName="UsuarioBdd" />
+                <ScalarProperty Name="PasswordBdd" ColumnName="PasswordBdd" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="MensajeProceso" ColumnName="MensajeProceso" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentoElectronico">
+            <EntityTypeMapping TypeName="SafiBDDParametrosModel.DocumentoElectronico">
+              <MappingFragment StoreEntitySet="DocumentoElectronico">
+                <ScalarProperty Name="CodigoId" ColumnName="CodigoId" />
+                <ScalarProperty Name="ClaveAcceso" ColumnName="ClaveAcceso" />
+                <ScalarProperty Name="DocumentoId" ColumnName="DocumentoId" />
+                <ScalarProperty Name="EstadoRecepcion" ColumnName="EstadoRecepcion" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="FechaAutorizacion" ColumnName="FechaAutorizacion" />
+                <ScalarProperty Name="NumeroAutorizacion" ColumnName="NumeroAutorizacion" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="CodigoRelacionId" ColumnName="CodigoRelacionId" />
+                <ScalarProperty Name="CodigoRelacionIdReal" ColumnName="CodigoRelacionIdReal" />
+                <ScalarProperty Name="PathCertificado" ColumnName="PathCertificado" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BDD" ColumnName="BDD" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="EstadoDocumentoId" ColumnName="EstadoDocumentoId" />
+                <ScalarProperty Name="FirmadorElectronicoId" ColumnName="FirmadorElectronicoId" />
+                <ScalarProperty Name="DocumentoXml" ColumnName="DocumentoXml" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoComprobanteMasivo">
+            <EntityTypeMapping TypeName="SafiBDDParametrosModel.EstadoComprobanteMasivo">
+              <MappingFragment StoreEntitySet="EstadoComprobanteMasivo">
+                <ScalarProperty Name="CodigoId" ColumnName="CodigoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

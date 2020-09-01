@@ -1,0 +1,92 @@
+﻿@model App_Mundial_Miles.Models.LoginModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>CENTRALIZACIÓN - CARGA DE FACTURAS Y NOTAS DE CRÉDITO</title>
+    <link href="~/Content/main/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" />
+    <link href="~/Content/main/dist/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="~/Content/main/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:chocolate">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Iniciar Sesión</h3>
+                    </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                        {
+                            @Html.ValidationSummary(true)
+                            <form role="form">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Usuario" name="UserName" type="text" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Contraseña" name="Password" type="password" value="">
+                                    </div>
+
+                                    <div class="form-group" align="center">
+                                        @*<label for="nombre">Canal</label>*@
+                                        @if (ViewBag.totalListadoPuntos > 0)
+                                        {
+                                            <div class="row" align="center">
+                                                <div class="col-md-10">
+                                                    @*@Html.DropDownList("Aplicacion", (IEnumerable<SelectListItem>)ViewBag.listadoPuntos, new { @class = "form-control" })*@
+                                                    @Html.DropDownList("Aplicacion", (IEnumerable<SelectListItem>)ViewBag.listadoPuntos, new { @class = "form-control" })
+                                                </div>
+                                                <div style="margin-top: 7px;" class="col-md-2">
+                                                    <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-original-title="Seleccione la aplicación a través de cual se van a emitir los documentos. @ViewBag.informacionAmbiente"></span>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <button class="btn btn-md btn-primary btn-block">Ingresar</button>
+                                        }
+                                        else
+                                        {
+                                            <div class="row" align="center">
+                                                <div class="col-md-12">
+                                                    <span style="color: red;">Necesita parametrizar la aplicación con el canal correspondiente.</span>  
+                                                    <span style="color: blue;" class="glyphicon glyphicon-thumbs-down" data-toggle="tooltip" data-original-title="No existen aplicaciones parametrizadas. @ViewBag.informacionAmbiente"></span>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <button class="btn btn-md btn-primary btn-block" disabled>Ingresar</button>
+                                        }
+
+
+                                    </div>
+
+
+                                    
+                                </fieldset>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/main/vendor/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip({
+                placement: 'top'
+            });
+        });
+    </script>
+    <script src="~/Content/main/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/main/vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="~/Content/main/dist/js/sb-admin-2.min.js"></script>
+</body>
+</html>

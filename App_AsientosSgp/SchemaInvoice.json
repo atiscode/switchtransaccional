@@ -1,0 +1,158 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "Cabecera": {
+            "type": "object",
+            "properties": {
+                "Cliente": {
+                    "type": "object",
+                    "properties": {
+                        "CodigoCliente": {
+                            "type": "string",
+                            "minLength": 0,
+                            "maxLength": 150 //13 porque es RUC 
+                        },
+                        "NombreCliente": {
+                            "type": "string"
+                        },
+                        "Identificacion": {
+                            "type": "string",
+                            "minLength": 0,
+                            "maxLength": 150 //Cedula
+                        },
+                        "Direccion": {
+                            "type": "string"
+                        },
+                        "Mail": {
+                            "type": "string"
+                            //"pattern": "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                        },
+                        "Telefono": {
+                            "type": "string"
+                        },
+                        "Segmento": {
+                            "type": "string",
+                            "minLength": 3
+                        }
+                    },
+                    "required": [
+                        "CodigoCliente",
+                        "NombreCliente",
+                        "Identificacion",
+                        "Direccion",
+                        "Mail",
+                        "Telefono",
+                        "Segmento"
+                    ]
+                },
+                "Detalle": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Cliente",
+                "Detalle"
+            ]
+        },
+        "Detalle": {
+            "type": "object",
+            "properties": {
+                "Factura": {
+                    "type": "object",
+                    "properties": {
+                        "Secuencial": {
+                            "type": "string"
+                        },
+                        "Observacion": {
+                            "type": "string"
+                        },
+                        "SubTotal": {
+                            "type": "number"
+                        },
+                        "Total": {
+                            "type": "number"
+                        },
+                        "DetalleFactura": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Cantidad": {
+                                            "type": "integer"
+                                        },
+                                        "Detalle": {
+                                            "type": "string"
+                                        },
+                                        "Valor": {
+                                            "type": "number"
+                                        },
+                                        "SubTotal": {
+                                            "type": "number"
+                                        },
+                                        "Total": {
+                                            "type": "number"
+                                        },
+                                        "CodigoCategoria": {
+                                            "type": "string"
+                                        },
+                                        "CodigoProducto": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 150
+                                        },
+                                        "RUCProveedor": {
+                                            "type": "string"
+                                        },
+                                        "Proveedor": {
+                                            "type": "string"
+                                        },
+                                        "CostoUnitario": {
+                                            "type": "number"
+                                        },
+                                        "FechaVenta": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "Cantidad",
+                                        "Detalle",
+                                        "Valor",
+                                        "SubTotal",
+                                        "Total",
+                                        "CodigoCategoria",
+                                        "CodigoProducto",
+                                        "RUCProveedor",
+                                        "Proveedor",
+                                        "CostoUnitario",
+                                        "FechaVenta"
+                                    ]
+                                }
+                            ]
+                        },
+                        "Estado": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "Secuencial",
+                        "Observacion",
+                        "SubTotal",
+                        "Total",
+                        "DetalleFactura",
+                        "Estado"
+                    ]
+                }
+            },
+            "required": [
+                "Factura"
+            ]
+        }
+    },
+    "required": [
+        "Cabecera",
+        "Detalle"
+    ]
+}

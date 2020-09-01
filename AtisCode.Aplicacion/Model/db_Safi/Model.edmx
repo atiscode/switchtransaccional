@@ -1,0 +1,948 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SafiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CXCDIR">
+          <Key>
+            <PropertyRef Name="CodigoID" />
+          </Key>
+          <Property Name="CodigoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="CodRelacionID" Type="int" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Clave1" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="500" />
+          <Property Name="Actividad" Type="int" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="TipoDoc" Type="int" Nullable="false" />
+          <Property Name="Ruc" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="60" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Pais" Type="int" />
+          <Property Name="Provincia" Type="int" />
+          <Property Name="Canton" Type="int" />
+          <Property Name="Parroquia" Type="int" />
+          <Property Name="Region" Type="int" />
+          <Property Name="Ciudad" Type="int" />
+          <Property Name="Zona" Type="int" />
+          <Property Name="Direc1" Type="varchar(max)" />
+          <Property Name="Direc2" Type="varchar" MaxLength="60" />
+          <Property Name="Telef1" Type="varchar" MaxLength="15" />
+          <Property Name="Telef2" Type="varchar" MaxLength="15" />
+          <Property Name="Fax" Type="varchar" MaxLength="15" />
+          <Property Name="Grafico" Type="varchar" MaxLength="500" />
+          <Property Name="Referencia" Type="varchar" MaxLength="60" />
+          <Property Name="Repres" Type="varchar" MaxLength="60" />
+          <Property Name="RFuente" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Observa" Type="varchar" MaxLength="60" />
+          <Property Name="Uso" Type="varchar(max)" />
+          <Property Name="Archivo" Type="varchar" MaxLength="500" />
+          <Property Name="Hoja" Type="varchar" MaxLength="60" />
+          <Property Name="Monto" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="Limite" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="int" Nullable="false" />
+          <Property Name="No_Div" Type="int" Nullable="false" />
+          <Property Name="Iva" Type="varchar" MaxLength="5" />
+          <Property Name="Dcto" Type="decimal" Precision="8" Scale="4" Nullable="false" />
+          <Property Name="Cme" Type="int" Nullable="false" />
+          <Property Name="Total_Vtas" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="1" />
+          <Property Name="Usuarios" Type="int" />
+          <Property Name="DB1" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR1" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL1" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB2" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR2" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL2" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB3" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR3" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL3" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB4" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR4" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL4" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB5" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR5" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL5" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB6" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR6" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL6" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB7" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR7" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL7" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB8" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR8" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL8" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB9" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR9" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL9" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB10" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR10" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL10" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB11" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR11" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL11" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="DB12" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="CR12" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="SL12" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="EmailRepresentante" Type="varchar" MaxLength="250" />
+          <Property Name="Contador" Type="varchar" MaxLength="60" />
+          <Property Name="EmailContador" Type="varchar" MaxLength="250" />
+          <Property Name="TipoContribuyente" Type="int" />
+          <Property Name="IvaPresup" Type="int" />
+          <Property Name="CodRetRenta" Type="int" />
+          <Property Name="PrecioDis" Type="int" />
+          <Property Name="PrecioCre" Type="int" />
+          <Property Name="Doc_Ele" Type="bit" />
+          <Property Name="Dinardap" Type="varchar" MaxLength="13" />
+          <Property Name="Relacionado" Type="varchar" MaxLength="1" />
+          <Property Name="Clave2" Type="int" />
+          <Property Name="TipoCta" Type="int" />
+          <Property Name="NumCta" Type="varchar" MaxLength="20" />
+          <Property Name="NomBco" Type="varchar" MaxLength="40" />
+          <Property Name="CodBco" Type="varchar" MaxLength="4" />
+          <Property Name="Latitud" Type="decimal" Precision="19" Scale="8" />
+          <Property Name="Longitud" Type="decimal" Precision="19" Scale="8" />
+          <Property Name="CodigoPostal" Type="varchar" MaxLength="10" />
+          <Property Name="TipoCliente" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="CXPDIR">
+          <Key>
+            <PropertyRef Name="CodigoID" />
+          </Key>
+          <Property Name="CodigoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="CodRelacionID" Type="int" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="125" />
+          <Property Name="Actividad" Type="int" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="TipoDoc" Type="int" Nullable="false" />
+          <Property Name="Ruc" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="60" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Pais" Type="int" />
+          <Property Name="Provincia" Type="int" />
+          <Property Name="Canton" Type="int" />
+          <Property Name="Parroquia" Type="int" />
+          <Property Name="Region" Type="int" />
+          <Property Name="Ciudad" Type="int" />
+          <Property Name="Zona" Type="int" />
+          <Property Name="Direc1" Type="varchar(max)" />
+          <Property Name="Direc2" Type="varchar" MaxLength="60" />
+          <Property Name="Telef1" Type="varchar" MaxLength="15" />
+          <Property Name="Telef2" Type="varchar" MaxLength="15" />
+          <Property Name="Fax" Type="varchar" MaxLength="15" />
+          <Property Name="Grafico" Type="varchar" MaxLength="500" />
+          <Property Name="Referencia" Type="varchar" MaxLength="60" />
+          <Property Name="Repres" Type="varchar" MaxLength="80" />
+          <Property Name="RFuente" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Observa" Type="varchar" MaxLength="60" />
+          <Property Name="TipoCta" Type="int" />
+          <Property Name="NumCta" Type="varchar" MaxLength="20" />
+          <Property Name="NomBco" Type="varchar" MaxLength="40" />
+          <Property Name="Uso" Type="varchar" MaxLength="1000" />
+          <Property Name="Archivo" Type="varchar" MaxLength="500" />
+          <Property Name="Hoja" Type="varchar" MaxLength="60" />
+          <Property Name="Monto" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="Limite" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="No_Div" Type="int" Nullable="false" />
+          <Property Name="Dcto" Type="decimal" Precision="8" Scale="4" />
+          <Property Name="Cme" Type="int" Nullable="false" />
+          <Property Name="Total_Comp" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="Imprenta" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Status" Type="int" />
+          <Property Name="TipoContribuyente" Type="int" />
+          <Property Name="CtaGto" Type="int" />
+          <Property Name="CodRIr" Type="int" />
+          <Property Name="CodRIva" Type="int" />
+          <Property Name="CodRIva2" Type="int" />
+          <Property Name="CtaIvaComp" Type="int" />
+          <Property Name="Doc_Ele" Type="bit" />
+          <Property Name="TipoProveedor" Type="varchar" MaxLength="2" />
+          <Property Name="Relacionado" Type="varchar" MaxLength="1" />
+          <Property Name="CodBanco" Type="varchar" MaxLength="4" />
+          <Property Name="Latitud" Type="decimal" Precision="19" Scale="8" />
+          <Property Name="Longitud" Type="decimal" Precision="19" Scale="8" />
+          <Property Name="CodigoPostal" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="FACHIS">
+          <Key>
+            <PropertyRef Name="FHID" />
+          </Key>
+          <Property Name="FHID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FHFactura" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="FHNum_doc" Type="int" />
+          <Property Name="FHTipo" Type="int" Nullable="false" />
+          <Property Name="FHClave" Type="int" Nullable="false" />
+          <Property Name="FHRuc" Type="varchar" MaxLength="13" />
+          <Property Name="FHClave1" Type="int" />
+          <Property Name="FHDividendos" Type="int" />
+          <Property Name="FHFechaf" Type="datetime" />
+          <Property Name="FHFechav" Type="datetime" />
+          <Property Name="FHProducto" Type="int" />
+          <Property Name="FHDcto" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHFlete" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHOtros" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHGabrado0" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHGrabrado" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHImpto" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHDctog" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHCodRelacionID" Type="int" />
+          <Property Name="FHEstado" Type="varchar" MaxLength="3" />
+          <Property Name="FHCodigo" Type="int" />
+          <Property Name="FHBodega" Type="int" />
+          <Property Name="FHHora" Type="varchar" MaxLength="8" />
+          <Property Name="FHTd" Type="int" />
+          <Property Name="FHNombre" Type="varchar" MaxLength="35" />
+          <Property Name="FHZona" Type="int" />
+          <Property Name="FHComent" Type="varchar(max)" />
+          <Property Name="FHComent1" Type="varchar(max)" />
+          <Property Name="FHComent2" Type="varchar(max)" />
+          <Property Name="FHTelf1" Type="varchar" MaxLength="10" />
+          <Property Name="FHVentas" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHNo_precio" Type="int" />
+          <Property Name="FHAnticipo" Type="varchar" MaxLength="1" />
+          <Property Name="FHN_dias" Type="int" />
+          <Property Name="FHT_pos" Type="int" />
+          <Property Name="FHT_posdev" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHPos" Type="int" Nullable="false" />
+          <Property Name="FHCodmon" Type="int" />
+          <Property Name="FHMontomon" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHT_cambio" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHFechaC" Type="datetime" />
+          <Property Name="FHComp" Type="int" />
+          <Property Name="FHInc_iva" Type="varchar" MaxLength="1" />
+          <Property Name="FHNo_forma" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHC_costo" Type="int" />
+          <Property Name="FHGuia" Type="varchar" MaxLength="15" />
+          <Property Name="FHTransporte" Type="varchar" MaxLength="60" />
+          <Property Name="FHCitrans" Type="varchar" MaxLength="13" />
+          <Property Name="FHPlacatrans" Type="varchar" MaxLength="13" />
+          <Property Name="FHFechaenvio" Type="datetime" />
+          <Property Name="FHFechaRecep" Type="datetime" />
+          <Property Name="FHIva_bien" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHIva_serv" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHTotgeneral" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHAutorizacion" Type="bit" />
+          <Property Name="FHCodUsuAutoriza" Type="int" />
+          <Property Name="FHFch_Impresion" Type="datetime" />
+          <Property Name="FHAsientoCostoVenta" Type="int" />
+          <Property Name="FHFacNv" Type="int" />
+          <Property Name="FHIdIvaPre" Type="int" />
+          <Property Name="FHValorIvaPre" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHIce" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHTotalNeto" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHUsuario" Type="varchar" MaxLength="20" />
+          <Property Name="FHDescIva" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHDesc0" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHClave2" Type="int" />
+          <Property Name="FHClave3" Type="int" />
+          <Property Name="FHClave4" Type="int" />
+          <Property Name="FHClave5" Type="int" />
+          <Property Name="FHNoOp" Type="int" />
+          <Property Name="FHClaveCliente2" Type="int" />
+          <Property Name="FHNo_Objeto_IVA" Type="decimal" Precision="19" Scale="6" />
+          <Property Name="FHDocumentoElectronico" Type="bit" Nullable="false" />
+          <Property Name="FHNumeroAutorizacion" Type="varchar" MaxLength="60" />
+          <Property Name="FHFechaAutorizacion" Type="datetime" />
+          <Property Name="FHClaveAcceso" Type="varchar" MaxLength="60" />
+          <Property Name="FHAsiento" Type="varchar" MaxLength="13" />
+          <Property Name="FHNumeroComprobante" Type="varchar" MaxLength="13" />
+          <Property Name="FHCompSRIID" Type="int" />
+          <Property Name="FHCompSRITD" Type="varchar" MaxLength="2" />
+          <Property Name="FHCompSRIDetalle" Type="varchar" MaxLength="300" />
+          <Property Name="FHExportador" Type="bit" />
+          <Property Name="FHComercioExterior" Type="varchar" MaxLength="10" />
+          <Property Name="FHIncoTermFacturaCIF" Type="varchar" MaxLength="10" />
+          <Property Name="FHLugarIncoTerm" Type="varchar" MaxLength="300" />
+          <Property Name="FHPaisOrigen" Type="int" />
+          <Property Name="FHPuertoEmbarque" Type="varchar" MaxLength="300" />
+          <Property Name="FHPuertoDestino" Type="varchar" MaxLength="300" />
+          <Property Name="FHPaisDestino" Type="int" />
+          <Property Name="FHPaisAdquisicion" Type="int" />
+          <Property Name="FHTotalSinImpuestoFOB" Type="varchar" MaxLength="10" />
+          <Property Name="FHFleteInternacional" Type="decimal" Precision="14" Scale="6" />
+          <Property Name="FHSeguroInternacional" Type="decimal" Precision="14" Scale="6" />
+          <Property Name="FHGastosAduaneros" Type="decimal" Precision="14" Scale="6" />
+          <Property Name="FHOtrosGastosTransporte" Type="decimal" Precision="14" Scale="6" />
+        </EntityType>
+        <EntityType Name="tdocumentoscontador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nnum_doc" Type="bigint" />
+          <Property Name="tipo" Type="nchar" MaxLength="10" />
+          <Property Name="canal" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tfacturas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="factura" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Estado" Type="int" />
+          <Property Name="AutorizacionSRI" Type="varchar" MaxLength="100" />
+          <Property Name="ClaveAcceso" Type="varchar" MaxLength="100" />
+          <Property Name="FechaAutorizacion" Type="datetime" />
+          <Property Name="idFactura" Type="int" />
+          <Property Name="DescripcionError" Type="varchar" MaxLength="500" />
+          <Property Name="CodigoError" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoFormaPago" Type="varchar" MaxLength="10" />
+          <Property Name="Plazo" Type="varchar" MaxLength="50" />
+          <Property Name="secuencialerp" Type="nchar" MaxLength="70" />
+          <Property Name="numdocumento" Type="nchar" MaxLength="50" />
+          <Property Name="email_cliente" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="SafiModelStoreContainer">
+          <EntitySet Name="CXCDIR" EntityType="Self.CXCDIR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CXPDIR" EntityType="Self.CXPDIR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACHIS" EntityType="Self.FACHIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tdocumentoscontador" EntityType="Self.tdocumentoscontador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tfacturas" EntityType="Self.tfacturas" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SafiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FACHIS">
+          <Key>
+            <PropertyRef Name="FHID" />
+          </Key>
+          <Property Name="FHID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FHFactura" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FHNum_doc" Type="Int32" />
+          <Property Name="FHTipo" Type="Int32" Nullable="false" />
+          <Property Name="FHClave" Type="Int32" Nullable="false" />
+          <Property Name="FHRuc" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FHClave1" Type="Int32" />
+          <Property Name="FHDividendos" Type="Int32" />
+          <Property Name="FHFechaf" Type="DateTime" Precision="3" />
+          <Property Name="FHFechav" Type="DateTime" Precision="3" />
+          <Property Name="FHProducto" Type="Int32" />
+          <Property Name="FHDcto" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHFlete" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHOtros" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHGabrado0" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHGrabrado" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHImpto" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHDctog" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHCodRelacionID" Type="Int32" />
+          <Property Name="FHEstado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FHCodigo" Type="Int32" />
+          <Property Name="FHBodega" Type="Int32" />
+          <Property Name="FHHora" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FHTd" Type="Int32" />
+          <Property Name="FHNombre" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="FHZona" Type="Int32" />
+          <Property Name="FHComent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FHComent1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FHComent2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FHTelf1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FHVentas" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHNo_precio" Type="Int32" />
+          <Property Name="FHAnticipo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FHN_dias" Type="Int32" />
+          <Property Name="FHT_pos" Type="Int32" />
+          <Property Name="FHT_posdev" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHPos" Type="Int32" Nullable="false" />
+          <Property Name="FHCodmon" Type="Int32" />
+          <Property Name="FHMontomon" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHT_cambio" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHFechaC" Type="DateTime" Precision="3" />
+          <Property Name="FHComp" Type="Int32" />
+          <Property Name="FHInc_iva" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FHNo_forma" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHC_costo" Type="Int32" />
+          <Property Name="FHGuia" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FHTransporte" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="FHCitrans" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FHPlacatrans" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FHFechaenvio" Type="DateTime" Precision="3" />
+          <Property Name="FHFechaRecep" Type="DateTime" Precision="3" />
+          <Property Name="FHIva_bien" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHIva_serv" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHTotgeneral" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHAutorizacion" Type="Boolean" />
+          <Property Name="FHCodUsuAutoriza" Type="Int32" />
+          <Property Name="FHFch_Impresion" Type="DateTime" Precision="3" />
+          <Property Name="FHAsientoCostoVenta" Type="Int32" />
+          <Property Name="FHFacNv" Type="Int32" />
+          <Property Name="FHIdIvaPre" Type="Int32" />
+          <Property Name="FHValorIvaPre" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHIce" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHTotalNeto" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FHDescIva" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHDesc0" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHClave2" Type="Int32" />
+          <Property Name="FHClave3" Type="Int32" />
+          <Property Name="FHClave4" Type="Int32" />
+          <Property Name="FHClave5" Type="Int32" />
+          <Property Name="FHNoOp" Type="Int32" />
+          <Property Name="FHClaveCliente2" Type="Int32" />
+          <Property Name="FHNo_Objeto_IVA" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="FHDocumentoElectronico" Type="Boolean" Nullable="false" />
+          <Property Name="FHNumeroAutorizacion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="FHFechaAutorizacion" Type="DateTime" Precision="3" />
+          <Property Name="FHClaveAcceso" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="FHAsiento" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FHNumeroComprobante" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FHCompSRIID" Type="Int32" />
+          <Property Name="FHCompSRITD" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="FHCompSRIDetalle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FHExportador" Type="Boolean" />
+          <Property Name="FHComercioExterior" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FHIncoTermFacturaCIF" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FHLugarIncoTerm" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FHPaisOrigen" Type="Int32" />
+          <Property Name="FHPuertoEmbarque" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FHPuertoDestino" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FHPaisDestino" Type="Int32" />
+          <Property Name="FHPaisAdquisicion" Type="Int32" />
+          <Property Name="FHTotalSinImpuestoFOB" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FHFleteInternacional" Type="Decimal" Precision="14" Scale="6" />
+          <Property Name="FHSeguroInternacional" Type="Decimal" Precision="14" Scale="6" />
+          <Property Name="FHGastosAduaneros" Type="Decimal" Precision="14" Scale="6" />
+          <Property Name="FHOtrosGastosTransporte" Type="Decimal" Precision="14" Scale="6" />
+        </EntityType>
+        <EntityContainer Name="SafiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FACHIS" EntityType="Self.FACHIS" />
+          <EntitySet Name="CXCDIR" EntityType="SafiModel.CXCDIR" />
+          <EntitySet Name="tfacturas" EntityType="SafiModel.tfacturas" />
+          <EntitySet Name="tdocumentoscontador" EntityType="SafiModel.tdocumentoscontador" />
+          <EntitySet Name="CXPDIR" EntityType="SafiModel.CXPDIR" />
+        </EntityContainer>
+        <EntityType Name="CXCDIR">
+          <Key>
+            <PropertyRef Name="CodigoID" />
+          </Key>
+          <Property Name="CodigoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="CodRelacionID" Type="Int32" Nullable="false" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Clave1" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Actividad" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TipoDoc" Type="Int32" Nullable="false" />
+          <Property Name="Ruc" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="Int32" />
+          <Property Name="Provincia" Type="Int32" />
+          <Property Name="Canton" Type="Int32" />
+          <Property Name="Parroquia" Type="Int32" />
+          <Property Name="Region" Type="Int32" />
+          <Property Name="Ciudad" Type="Int32" />
+          <Property Name="Zona" Type="Int32" />
+          <Property Name="Direc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Direc2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Telef1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telef2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Grafico" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Referencia" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Repres" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RFuente" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Observa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Uso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Archivo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Hoja" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="Limite" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Int32" Nullable="false" />
+          <Property Name="No_Div" Type="Int32" Nullable="false" />
+          <Property Name="Iva" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Dcto" Type="Decimal" Nullable="false" Precision="8" Scale="4" />
+          <Property Name="Cme" Type="Int32" Nullable="false" />
+          <Property Name="Total_Vtas" Type="Decimal" Nullable="false" Precision="19" Scale="6" />
+          <Property Name="Version" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Usuarios" Type="Int32" />
+          <Property Name="DB1" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR1" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL1" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB2" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR2" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL2" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB3" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR3" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL3" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB4" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR4" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL4" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB5" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR5" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL5" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB6" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR6" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL6" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB7" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR7" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL7" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB8" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR8" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL8" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB9" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR9" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL9" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB10" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR10" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL10" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB11" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR11" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL11" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="DB12" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="CR12" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="SL12" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EmailRepresentante" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Contador" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="EmailContador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TipoContribuyente" Type="Int32" />
+          <Property Name="IvaPresup" Type="Int32" />
+          <Property Name="CodRetRenta" Type="Int32" />
+          <Property Name="PrecioDis" Type="Int32" />
+          <Property Name="PrecioCre" Type="Int32" />
+          <Property Name="Doc_Ele" Type="Boolean" />
+          <Property Name="Dinardap" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Relacionado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Clave2" Type="Int32" />
+          <Property Name="TipoCta" Type="Int32" />
+          <Property Name="NumCta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NomBco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CodBco" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Latitud" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="Longitud" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="CodigoPostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TipoCliente" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tfacturas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="factura" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
+          <Property Name="AutorizacionSRI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveAcceso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAutorizacion" Type="DateTime" Precision="3" />
+          <Property Name="idFactura" Type="Int32" />
+          <Property Name="DescripcionError" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoError" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoFormaPago" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Plazo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="secuencialerp" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="numdocumento" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="email_cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tdocumentoscontador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nnum_doc" Type="Int64" />
+          <Property Name="tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="canal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CXPDIR">
+          <Key>
+            <PropertyRef Name="CodigoID" />
+          </Key>
+          <Property Name="CodigoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="CodRelacionID" Type="Int32" Nullable="false" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+          <Property Name="Actividad" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TipoDoc" Type="Int32" Nullable="false" />
+          <Property Name="Ruc" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="Int32" />
+          <Property Name="Provincia" Type="Int32" />
+          <Property Name="Canton" Type="Int32" />
+          <Property Name="Parroquia" Type="Int32" />
+          <Property Name="Region" Type="Int32" />
+          <Property Name="Ciudad" Type="Int32" />
+          <Property Name="Zona" Type="Int32" />
+          <Property Name="Direc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Direc2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Telef1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telef2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Grafico" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Referencia" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Repres" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="RFuente" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Observa" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="TipoCta" Type="Int32" />
+          <Property Name="NumCta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NomBco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Uso" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Archivo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Hoja" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Nullable="false" Precision="19" Scale="6" />
+          <Property Name="Limite" Type="Decimal" Precision="19" Scale="6" />
+          <Property Name="No_Div" Type="Int32" Nullable="false" />
+          <Property Name="Dcto" Type="Decimal" Precision="8" Scale="4" />
+          <Property Name="Cme" Type="Int32" Nullable="false" />
+          <Property Name="Total_Comp" Type="Decimal" Nullable="false" Precision="19" Scale="6" />
+          <Property Name="Imprenta" Type="Int32" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="TipoContribuyente" Type="Int32" />
+          <Property Name="CtaGto" Type="Int32" />
+          <Property Name="CodRIr" Type="Int32" />
+          <Property Name="CodRIva" Type="Int32" />
+          <Property Name="CodRIva2" Type="Int32" />
+          <Property Name="CtaIvaComp" Type="Int32" />
+          <Property Name="Doc_Ele" Type="Boolean" />
+          <Property Name="TipoProveedor" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Relacionado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CodBanco" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Latitud" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="Longitud" Type="Decimal" Precision="19" Scale="8" />
+          <Property Name="CodigoPostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SafiModelStoreContainer" CdmEntityContainer="SafiEntities">
+          <EntitySetMapping Name="FACHIS">
+            <EntityTypeMapping TypeName="SafiModel.FACHIS">
+              <MappingFragment StoreEntitySet="FACHIS">
+                <ScalarProperty Name="FHID" ColumnName="FHID" />
+                <ScalarProperty Name="FHFactura" ColumnName="FHFactura" />
+                <ScalarProperty Name="FHNum_doc" ColumnName="FHNum_doc" />
+                <ScalarProperty Name="FHTipo" ColumnName="FHTipo" />
+                <ScalarProperty Name="FHClave" ColumnName="FHClave" />
+                <ScalarProperty Name="FHRuc" ColumnName="FHRuc" />
+                <ScalarProperty Name="FHClave1" ColumnName="FHClave1" />
+                <ScalarProperty Name="FHDividendos" ColumnName="FHDividendos" />
+                <ScalarProperty Name="FHFechaf" ColumnName="FHFechaf" />
+                <ScalarProperty Name="FHFechav" ColumnName="FHFechav" />
+                <ScalarProperty Name="FHProducto" ColumnName="FHProducto" />
+                <ScalarProperty Name="FHDcto" ColumnName="FHDcto" />
+                <ScalarProperty Name="FHFlete" ColumnName="FHFlete" />
+                <ScalarProperty Name="FHOtros" ColumnName="FHOtros" />
+                <ScalarProperty Name="FHGabrado0" ColumnName="FHGabrado0" />
+                <ScalarProperty Name="FHGrabrado" ColumnName="FHGrabrado" />
+                <ScalarProperty Name="FHImpto" ColumnName="FHImpto" />
+                <ScalarProperty Name="FHDctog" ColumnName="FHDctog" />
+                <ScalarProperty Name="FHCodRelacionID" ColumnName="FHCodRelacionID" />
+                <ScalarProperty Name="FHEstado" ColumnName="FHEstado" />
+                <ScalarProperty Name="FHCodigo" ColumnName="FHCodigo" />
+                <ScalarProperty Name="FHBodega" ColumnName="FHBodega" />
+                <ScalarProperty Name="FHHora" ColumnName="FHHora" />
+                <ScalarProperty Name="FHTd" ColumnName="FHTd" />
+                <ScalarProperty Name="FHNombre" ColumnName="FHNombre" />
+                <ScalarProperty Name="FHZona" ColumnName="FHZona" />
+                <ScalarProperty Name="FHComent" ColumnName="FHComent" />
+                <ScalarProperty Name="FHComent1" ColumnName="FHComent1" />
+                <ScalarProperty Name="FHComent2" ColumnName="FHComent2" />
+                <ScalarProperty Name="FHTelf1" ColumnName="FHTelf1" />
+                <ScalarProperty Name="FHVentas" ColumnName="FHVentas" />
+                <ScalarProperty Name="FHNo_precio" ColumnName="FHNo_precio" />
+                <ScalarProperty Name="FHAnticipo" ColumnName="FHAnticipo" />
+                <ScalarProperty Name="FHN_dias" ColumnName="FHN_dias" />
+                <ScalarProperty Name="FHT_pos" ColumnName="FHT_pos" />
+                <ScalarProperty Name="FHT_posdev" ColumnName="FHT_posdev" />
+                <ScalarProperty Name="FHPos" ColumnName="FHPos" />
+                <ScalarProperty Name="FHCodmon" ColumnName="FHCodmon" />
+                <ScalarProperty Name="FHMontomon" ColumnName="FHMontomon" />
+                <ScalarProperty Name="FHT_cambio" ColumnName="FHT_cambio" />
+                <ScalarProperty Name="FHFechaC" ColumnName="FHFechaC" />
+                <ScalarProperty Name="FHComp" ColumnName="FHComp" />
+                <ScalarProperty Name="FHInc_iva" ColumnName="FHInc_iva" />
+                <ScalarProperty Name="FHNo_forma" ColumnName="FHNo_forma" />
+                <ScalarProperty Name="FHC_costo" ColumnName="FHC_costo" />
+                <ScalarProperty Name="FHGuia" ColumnName="FHGuia" />
+                <ScalarProperty Name="FHTransporte" ColumnName="FHTransporte" />
+                <ScalarProperty Name="FHCitrans" ColumnName="FHCitrans" />
+                <ScalarProperty Name="FHPlacatrans" ColumnName="FHPlacatrans" />
+                <ScalarProperty Name="FHFechaenvio" ColumnName="FHFechaenvio" />
+                <ScalarProperty Name="FHFechaRecep" ColumnName="FHFechaRecep" />
+                <ScalarProperty Name="FHIva_bien" ColumnName="FHIva_bien" />
+                <ScalarProperty Name="FHIva_serv" ColumnName="FHIva_serv" />
+                <ScalarProperty Name="FHTotgeneral" ColumnName="FHTotgeneral" />
+                <ScalarProperty Name="FHAutorizacion" ColumnName="FHAutorizacion" />
+                <ScalarProperty Name="FHCodUsuAutoriza" ColumnName="FHCodUsuAutoriza" />
+                <ScalarProperty Name="FHFch_Impresion" ColumnName="FHFch_Impresion" />
+                <ScalarProperty Name="FHAsientoCostoVenta" ColumnName="FHAsientoCostoVenta" />
+                <ScalarProperty Name="FHFacNv" ColumnName="FHFacNv" />
+                <ScalarProperty Name="FHIdIvaPre" ColumnName="FHIdIvaPre" />
+                <ScalarProperty Name="FHValorIvaPre" ColumnName="FHValorIvaPre" />
+                <ScalarProperty Name="FHIce" ColumnName="FHIce" />
+                <ScalarProperty Name="FHTotalNeto" ColumnName="FHTotalNeto" />
+                <ScalarProperty Name="FHUsuario" ColumnName="FHUsuario" />
+                <ScalarProperty Name="FHDescIva" ColumnName="FHDescIva" />
+                <ScalarProperty Name="FHDesc0" ColumnName="FHDesc0" />
+                <ScalarProperty Name="FHClave2" ColumnName="FHClave2" />
+                <ScalarProperty Name="FHClave3" ColumnName="FHClave3" />
+                <ScalarProperty Name="FHClave4" ColumnName="FHClave4" />
+                <ScalarProperty Name="FHClave5" ColumnName="FHClave5" />
+                <ScalarProperty Name="FHNoOp" ColumnName="FHNoOp" />
+                <ScalarProperty Name="FHClaveCliente2" ColumnName="FHClaveCliente2" />
+                <ScalarProperty Name="FHNo_Objeto_IVA" ColumnName="FHNo_Objeto_IVA" />
+                <ScalarProperty Name="FHDocumentoElectronico" ColumnName="FHDocumentoElectronico" />
+                <ScalarProperty Name="FHNumeroAutorizacion" ColumnName="FHNumeroAutorizacion" />
+                <ScalarProperty Name="FHFechaAutorizacion" ColumnName="FHFechaAutorizacion" />
+                <ScalarProperty Name="FHClaveAcceso" ColumnName="FHClaveAcceso" />
+                <ScalarProperty Name="FHAsiento" ColumnName="FHAsiento" />
+                <ScalarProperty Name="FHNumeroComprobante" ColumnName="FHNumeroComprobante" />
+                <ScalarProperty Name="FHCompSRIID" ColumnName="FHCompSRIID" />
+                <ScalarProperty Name="FHCompSRITD" ColumnName="FHCompSRITD" />
+                <ScalarProperty Name="FHCompSRIDetalle" ColumnName="FHCompSRIDetalle" />
+                <ScalarProperty Name="FHExportador" ColumnName="FHExportador" />
+                <ScalarProperty Name="FHComercioExterior" ColumnName="FHComercioExterior" />
+                <ScalarProperty Name="FHIncoTermFacturaCIF" ColumnName="FHIncoTermFacturaCIF" />
+                <ScalarProperty Name="FHLugarIncoTerm" ColumnName="FHLugarIncoTerm" />
+                <ScalarProperty Name="FHPaisOrigen" ColumnName="FHPaisOrigen" />
+                <ScalarProperty Name="FHPuertoEmbarque" ColumnName="FHPuertoEmbarque" />
+                <ScalarProperty Name="FHPuertoDestino" ColumnName="FHPuertoDestino" />
+                <ScalarProperty Name="FHPaisDestino" ColumnName="FHPaisDestino" />
+                <ScalarProperty Name="FHPaisAdquisicion" ColumnName="FHPaisAdquisicion" />
+                <ScalarProperty Name="FHTotalSinImpuestoFOB" ColumnName="FHTotalSinImpuestoFOB" />
+                <ScalarProperty Name="FHFleteInternacional" ColumnName="FHFleteInternacional" />
+                <ScalarProperty Name="FHSeguroInternacional" ColumnName="FHSeguroInternacional" />
+                <ScalarProperty Name="FHGastosAduaneros" ColumnName="FHGastosAduaneros" />
+                <ScalarProperty Name="FHOtrosGastosTransporte" ColumnName="FHOtrosGastosTransporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CXCDIR">
+            <EntityTypeMapping TypeName="SafiModel.CXCDIR">
+              <MappingFragment StoreEntitySet="CXCDIR">
+                <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="CodBco" ColumnName="CodBco" />
+                <ScalarProperty Name="NomBco" ColumnName="NomBco" />
+                <ScalarProperty Name="NumCta" ColumnName="NumCta" />
+                <ScalarProperty Name="TipoCta" ColumnName="TipoCta" />
+                <ScalarProperty Name="Clave2" ColumnName="Clave2" />
+                <ScalarProperty Name="Relacionado" ColumnName="Relacionado" />
+                <ScalarProperty Name="Dinardap" ColumnName="Dinardap" />
+                <ScalarProperty Name="Doc_Ele" ColumnName="Doc_Ele" />
+                <ScalarProperty Name="PrecioCre" ColumnName="PrecioCre" />
+                <ScalarProperty Name="PrecioDis" ColumnName="PrecioDis" />
+                <ScalarProperty Name="CodRetRenta" ColumnName="CodRetRenta" />
+                <ScalarProperty Name="IvaPresup" ColumnName="IvaPresup" />
+                <ScalarProperty Name="TipoContribuyente" ColumnName="TipoContribuyente" />
+                <ScalarProperty Name="EmailContador" ColumnName="EmailContador" />
+                <ScalarProperty Name="Contador" ColumnName="Contador" />
+                <ScalarProperty Name="EmailRepresentante" ColumnName="EmailRepresentante" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="SL12" ColumnName="SL12" />
+                <ScalarProperty Name="CR12" ColumnName="CR12" />
+                <ScalarProperty Name="DB12" ColumnName="DB12" />
+                <ScalarProperty Name="SL11" ColumnName="SL11" />
+                <ScalarProperty Name="CR11" ColumnName="CR11" />
+                <ScalarProperty Name="DB11" ColumnName="DB11" />
+                <ScalarProperty Name="SL10" ColumnName="SL10" />
+                <ScalarProperty Name="CR10" ColumnName="CR10" />
+                <ScalarProperty Name="DB10" ColumnName="DB10" />
+                <ScalarProperty Name="SL9" ColumnName="SL9" />
+                <ScalarProperty Name="CR9" ColumnName="CR9" />
+                <ScalarProperty Name="DB9" ColumnName="DB9" />
+                <ScalarProperty Name="SL8" ColumnName="SL8" />
+                <ScalarProperty Name="CR8" ColumnName="CR8" />
+                <ScalarProperty Name="DB8" ColumnName="DB8" />
+                <ScalarProperty Name="SL7" ColumnName="SL7" />
+                <ScalarProperty Name="CR7" ColumnName="CR7" />
+                <ScalarProperty Name="DB7" ColumnName="DB7" />
+                <ScalarProperty Name="SL6" ColumnName="SL6" />
+                <ScalarProperty Name="CR6" ColumnName="CR6" />
+                <ScalarProperty Name="DB6" ColumnName="DB6" />
+                <ScalarProperty Name="SL5" ColumnName="SL5" />
+                <ScalarProperty Name="CR5" ColumnName="CR5" />
+                <ScalarProperty Name="DB5" ColumnName="DB5" />
+                <ScalarProperty Name="SL4" ColumnName="SL4" />
+                <ScalarProperty Name="CR4" ColumnName="CR4" />
+                <ScalarProperty Name="DB4" ColumnName="DB4" />
+                <ScalarProperty Name="SL3" ColumnName="SL3" />
+                <ScalarProperty Name="CR3" ColumnName="CR3" />
+                <ScalarProperty Name="DB3" ColumnName="DB3" />
+                <ScalarProperty Name="SL2" ColumnName="SL2" />
+                <ScalarProperty Name="CR2" ColumnName="CR2" />
+                <ScalarProperty Name="DB2" ColumnName="DB2" />
+                <ScalarProperty Name="SL1" ColumnName="SL1" />
+                <ScalarProperty Name="CR1" ColumnName="CR1" />
+                <ScalarProperty Name="DB1" ColumnName="DB1" />
+                <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Total_Vtas" ColumnName="Total_Vtas" />
+                <ScalarProperty Name="Cme" ColumnName="Cme" />
+                <ScalarProperty Name="Dcto" ColumnName="Dcto" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="No_Div" ColumnName="No_Div" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Limite" ColumnName="Limite" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Hoja" ColumnName="Hoja" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="Uso" ColumnName="Uso" />
+                <ScalarProperty Name="Observa" ColumnName="Observa" />
+                <ScalarProperty Name="RFuente" ColumnName="RFuente" />
+                <ScalarProperty Name="Repres" ColumnName="Repres" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Grafico" ColumnName="Grafico" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telef2" ColumnName="Telef2" />
+                <ScalarProperty Name="Telef1" ColumnName="Telef1" />
+                <ScalarProperty Name="Direc2" ColumnName="Direc2" />
+                <ScalarProperty Name="Direc1" ColumnName="Direc1" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Parroquia" ColumnName="Parroquia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="TipoDoc" ColumnName="TipoDoc" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave1" ColumnName="Clave1" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="CodRelacionID" ColumnName="CodRelacionID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodigoID" ColumnName="CodigoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tfacturas">
+            <EntityTypeMapping TypeName="SafiModel.tfacturas">
+              <MappingFragment StoreEntitySet="tfacturas">
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="numdocumento" ColumnName="numdocumento" />
+                <ScalarProperty Name="secuencialerp" ColumnName="secuencialerp" />
+                <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+                <ScalarProperty Name="CodigoFormaPago" ColumnName="CodigoFormaPago" />
+                <ScalarProperty Name="CodigoError" ColumnName="CodigoError" />
+                <ScalarProperty Name="DescripcionError" ColumnName="DescripcionError" />
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="FechaAutorizacion" ColumnName="FechaAutorizacion" />
+                <ScalarProperty Name="ClaveAcceso" ColumnName="ClaveAcceso" />
+                <ScalarProperty Name="AutorizacionSRI" ColumnName="AutorizacionSRI" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="factura" ColumnName="factura" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tdocumentoscontador">
+            <EntityTypeMapping TypeName="SafiModel.tdocumentoscontador">
+              <MappingFragment StoreEntitySet="tdocumentoscontador">
+                <ScalarProperty Name="canal" ColumnName="canal" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="nnum_doc" ColumnName="nnum_doc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CXPDIR">
+            <EntityTypeMapping TypeName="SafiModel.CXPDIR">
+              <MappingFragment StoreEntitySet="CXPDIR">
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="CodBanco" ColumnName="CodBanco" />
+                <ScalarProperty Name="Relacionado" ColumnName="Relacionado" />
+                <ScalarProperty Name="TipoProveedor" ColumnName="TipoProveedor" />
+                <ScalarProperty Name="Doc_Ele" ColumnName="Doc_Ele" />
+                <ScalarProperty Name="CtaIvaComp" ColumnName="CtaIvaComp" />
+                <ScalarProperty Name="CodRIva2" ColumnName="CodRIva2" />
+                <ScalarProperty Name="CodRIva" ColumnName="CodRIva" />
+                <ScalarProperty Name="CodRIr" ColumnName="CodRIr" />
+                <ScalarProperty Name="CtaGto" ColumnName="CtaGto" />
+                <ScalarProperty Name="TipoContribuyente" ColumnName="TipoContribuyente" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Imprenta" ColumnName="Imprenta" />
+                <ScalarProperty Name="Total_Comp" ColumnName="Total_Comp" />
+                <ScalarProperty Name="Cme" ColumnName="Cme" />
+                <ScalarProperty Name="Dcto" ColumnName="Dcto" />
+                <ScalarProperty Name="No_Div" ColumnName="No_Div" />
+                <ScalarProperty Name="Limite" ColumnName="Limite" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Hoja" ColumnName="Hoja" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="Uso" ColumnName="Uso" />
+                <ScalarProperty Name="NomBco" ColumnName="NomBco" />
+                <ScalarProperty Name="NumCta" ColumnName="NumCta" />
+                <ScalarProperty Name="TipoCta" ColumnName="TipoCta" />
+                <ScalarProperty Name="Observa" ColumnName="Observa" />
+                <ScalarProperty Name="RFuente" ColumnName="RFuente" />
+                <ScalarProperty Name="Repres" ColumnName="Repres" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Grafico" ColumnName="Grafico" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telef2" ColumnName="Telef2" />
+                <ScalarProperty Name="Telef1" ColumnName="Telef1" />
+                <ScalarProperty Name="Direc2" ColumnName="Direc2" />
+                <ScalarProperty Name="Direc1" ColumnName="Direc1" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Parroquia" ColumnName="Parroquia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="TipoDoc" ColumnName="TipoDoc" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="CodRelacionID" ColumnName="CodRelacionID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodigoID" ColumnName="CodigoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

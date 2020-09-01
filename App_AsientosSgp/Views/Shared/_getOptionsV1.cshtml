@@ -1,0 +1,44 @@
+﻿@model App_Mundial_Miles.Models.DropModel
+
+
+<div class="form-group">
+    <label for="@Model.Nombre" class="col-sm-4 control-label">@Model.Label</label>
+    <div class="col-sm-8">
+        @if (Model.Items.Any())
+        {
+            <select id="@Model.Nombre" name="@Model.Nombre" role="@Model.Role" class="form-control" data-live-search="true" multiple="multiple">
+                @foreach (var item in Model.Items)
+                {
+                    if (item.Value == Model.IdActual.ToString())
+                    {
+                        <option value="@item.Value" selected="selected">@item.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            </select>
+        }
+        else
+        {
+            <select id="@Model.Nombre" name="@Model.Nombre" role="@Model.Role" class="col-sm-12 selectpicker show-tick form-control" data-live-search="true" multiple="multiple">
+                @foreach (var item in Model.Items)
+                {
+                    <option value="-1">No Existen...</option>
+                }
+            </select>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

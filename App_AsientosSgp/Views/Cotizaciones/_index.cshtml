@@ -1,0 +1,227 @@
+﻿<script src="~/Scripts/plupload/plupload.full.min.js"></script>
+<div class="line-separator"></div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="line-thin-separator"></div>
+                <div class="col-sm-12 hideEnc">
+                    <label class="encabezado"><b>Cargar Cotizaciones</b></label>
+                </div>
+                <div class="line-thin-separator"></div>
+            </div>
+            <div class="panel-body">
+                <div class="line-separator"></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-1">
+                            <label for="DocName" class="col-sm-12 control-label">Adjuntar: </label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input id="DocName" name="DocName" value="" role="edit" class="form-control" disabled>
+                        </div>
+                        <div class="col-sm-5">
+                            <button id="pickfiles" type="button" class="btn btn-primary">Examinar</button>
+                            <button id="uploadfiles" type="button" class="btn btn-primary">Procesar</button>
+
+                            <button type="button" id="refrescar" class="btn btn-success">
+                                <span class="glyphicon glyphicon-refresh"></span> Refrescar
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="line-separator"></div>
+                <div id="zonaError"></div>
+                <div class="line-separator"></div>
+                <div id="zonaDocumentosGenerados"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="row">
+
+    </div>
+    <div class="line-separator"></div>
+    <div class="row">
+        <div class="col-sm-12" id="zonaDetalleAdjuntos"></div>
+    </div>*@
+
+<script type="text/javascript">
+
+    $("#refrescar").click(function () {
+        location.reload()
+    });
+    var uploader = new plupload.Uploader({
+        // General settings
+        runtimes: 'silverlight,html4',
+        browse_button: 'pickfiles', // you can pass in id...
+        url: $.HostUrl() + "Cotizaciones/UploadDocument",
+        chunk_size: '100mb',
+        unique_names: true,
+
+        // Resize images on client-side if we can
+        resize: { width: 320, height: 240, quality: 90 },
+
+        filters: {
+            max_file_size: '10mb',
+
+            // Specify what files to browse for
+            mime_types: [
+                { title: "Image files", extensions: "jpg,gif,png,doc,docx,xls,xlsx,pdf" },
+                { title: "Zip files", extensions: "zip,rar" }
+            ]
+        },
+        flash_swf_url: '@Url.Content("~/Scripts/plupload/Moxie.swf")',
+
+        silverlight_xap_url: '@Url.Content("~/Scripts/plupload/Moxie.xap")',
+        // PreInit events, bound before the internal events
+        preinit: {
+            Init: function (up, info) {
+            },
+
+            UploadFile: function (up, file) {
+                up.settings.multipart_params = {
+                    ASPSESSID: $("#ASPSESSID").val(),    // Ignored by the action method, used internally by ASP.Net
+                    AUTHID: $("#AUTHID").val(),            // Ignored by the action method, used internally by ASP.Net
+                };
+            }
+        },
+
+        // Post init events, bound after the internal events
+        init: {
+            PostInit: function () {
+                // Called after initialization is finished and internal event handlers bound
+
+                document.getElementById('uploadfiles').onclick = function () {
+                    debugger
+                    var documento = $("#DocName").val();
+
+                    if (documento === null || documento === "")
+                        return;
+
+                    uploader.start();
+                    $("#zonaError").html("");
+                    $("#loadingModal").modal("toggle");
+                    return false;
+                };
+            },
+
+            Browse: function (up) {
+                // Called when file picker is clicked
+
+            },
+
+            Refresh: function (up) {
+                // Called when the position or dimensions of the picker change
+
+            },
+
+            StateChanged: function (up) {
+                // Called when the state of the queue is changed
+
+            },
+
+            QueueChanged: function (up) {
+                // Called when queue is changed by adding or removing files
+
+            },
+
+            OptionChanged: function (up, name, value, oldValue) {
+                // Called when one of the configuration options is changed
+            },
+
+            BeforeUpload: function (up, file) {
+                // Called right before the upload for a given file starts, can be used to cancel it if required
+
+            },
+
+            UploadProgress: function (up, file) {
+                // Called while file is being uploaded
+            },
+
+            FileFiltered: function (up, file) {
+                // Called when file successfully files all the filters
+
+            },
+
+            FilesAdded: function (up, files) {
+                // Called when files are added to queue
+                plupload.each(files, function (file) {
+                    $("#DocName").val(file.name);
+                });
+            },
+
+            FilesRemoved: function (up, files) {
+                // Called when files are removed from queue
+
+
+                plupload.each(files, function (file) {
+
+                });
+            },
+
+            FileUploaded: function (up, file, info) {
+
+            },
+
+            ChunkUploaded: function (up, file, info) {
+                // Called when file chunk has finished uploading
+            },
+
+            UploadComplete: function (up, files) {
+                $("#DocName").val("");
+
+                $.ajax({
+                    url: $.HostUrl() + "Cotizaciones/GetErrores",
+                    data: {},
+                    type: 'GET',
+                    dataType: 'json',
+                    cache: false,
+                    success: function (response) {
+                        $("#zonaError").html(response.Xhtml);
+
+                    },
+                    error: function (xhr, status) {
+                        alert(xhr.responseText);
+                    },
+                    complete: function (xhr, status) {
+
+                    }
+                });
+
+                $.ajax({
+                    url: $.HostUrl() + "Cotizaciones/GetDocumentosGenerados",
+                    data: {},
+                    type: 'GET',
+                    dataType: 'json',
+                    cache: false,
+                    success: function (response) {
+                        $("#zonaDocumentosGenerados").html(response.Xhtml);
+                    },
+                    error: function (xhr, status) {
+                        alert(xhr.responseText);
+                    },
+                    complete: function (xhr, status) {
+                    }
+                });
+
+                $("#loadingModal").modal("hide");
+            },
+
+            Destroy: function (up) {
+                // Called when uploader is destroyed
+
+            },
+
+            Error: function (up, args) {
+                // Called when error occurs
+
+            }
+        }
+    });
+    uploader.init();
+
+</script>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="33ee7b38544748e6a38c6a6dd5088f13" Name="Diagram1">
+        <EntityTypeShape EntityType="SafiBDDParametrosModel.ComprobanteMasivo" Width="2.375" PointX="0.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafiBDDParametrosModel.ComprobanteMasivoHistorial" Width="2.375" PointX="6.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafiBDDParametrosModel.DocumentoElectronico" Width="3" PointX="10.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SafiBDDParametrosModel.EstadoComprobanteMasivo" Width="2.75" PointX="2.625" PointY="5.625" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

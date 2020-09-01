@@ -1,0 +1,223 @@
+﻿@using App_Mundial_Miles.Models
+@model IEnumerable<App_Mundial_Miles.Models.MenuModel>
+@{
+    var elePadre = Model.Where(t => t.MenuPadre == null).ToList();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.NombreAplicacion</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/main/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- MetisMenu CSS -->
+    <link href="~/Content/main/vendor/metisMenu/metisMenu.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/Content/main/dist/css/sb-admin-2.css" rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/main/vendor/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="~/Content/main/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/main/vendor/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/main/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" />
+    <link href="~/Content/main/Atiscode.css" rel="stylesheet" />
+
+    <link href="~/Content/select/dist/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/Content/main/datetime/datetime.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="hidden" id="host" value="@ViewBag.Host" />
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">@ViewBag.NombreAplicacion - @ViewBag.Segmento - <b style="color: green;">@ViewBag.TipoAmbiente</b> </a>
+
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right" style="text-align:right">
+                <li class="dropdown">
+                    <a href="#">
+                        <i class="login-header"></i><br />
+                        <i class="login-header"></i><br />
+                        <i class="login-header"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            @using (Html.BeginForm("Exit", "Home", FormMethod.Post, new { id = "exitForm" }))
+                            {
+                                <a id="idMenuSalir" href="#"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                            }
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="@Url.Action("Index", "Home")"><i class="fa fa-cog"></i> Información APP<span class="fa arrow"></span></a>
+                        </li>
+                        @foreach (var ele in elePadre)
+                        {
+                            var clase = "padre";
+                            var clasePadre = "fa fa-folder fa-fw";
+                            if (ele.Tipo == MenuModel.TipoElemento.Elemento)
+                            {
+                                clase = "hijo";
+                                clasePadre = "fa fa-file-text-o fa-fw";
+                            }
+                            var eleHijos = Model.Where(t => t.MenuPadre != null && t.MenuPadre.Key == ele.Key).ToList();
+                            <li>
+                                <a href="#" id="@ele.Key" class="@clase"><i class="@clasePadre"></i> @ele.Display<span class="fa arrow"></span></a>
+                                @if (eleHijos.Any())
+                                {
+                                    <ul class="nav nav-second-level">
+                                        @foreach (var hijo in eleHijos)
+                                        {
+                                            clase = "padre";
+                                            var claseHijo = "fa fa-folder fa-fw";
+                                            if (hijo.Tipo == MenuModel.TipoElemento.Elemento)
+                                            {
+                                                clase = "hijo";
+                                                claseHijo = "fa fa-file-text-o fa-fw";
+                                            }
+                                            var eleNietos = Model.Where(t => t.MenuPadre != null && t.MenuPadre.Key == hijo.Key).ToList();
+                                            <li>
+                                                <a href="#" id="@hijo.Key" class="@clase"><i class="@claseHijo"></i> @hijo.Display<span class="fa arrow"></span></a>
+                                                @if (eleNietos.Any())
+                                                {
+                                                    <ul class="nav nav-third-level">
+                                                        @foreach (var nieto in eleNietos)
+                                                        {
+                                                            clase = "padre";
+                                                            var claseNieto = "fa fa-folder fa-fw";
+                                                            if (nieto.Tipo == MenuModel.TipoElemento.Elemento)
+                                                            {
+                                                                clase = "hijo";
+                                                                claseNieto = "fa fa-file-text-o fa-fw";
+                                                            }
+                                                            <li>
+                                                                <a href="#" id="@nieto.Key" class="@clase"><i class="@claseNieto"></i> @nieto.Display</a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+            <div id="main-content">
+
+                <center style="margin-top: 120px;">
+
+                    <h1>@ViewBag.Empresa</h1>
+
+                    <hr />
+
+                    <div>
+                        <b> Aplicación: </b> @ViewBag.NombreAplicacion
+                    </div>
+                    <div>
+                        <b> Segmento: </b> @ViewBag.Segmento
+                    </div>
+                    <div>
+                        <b> Ambiente: </b> @ViewBag.TipoAmbiente
+                    </div>
+                    <div>
+                        <h4><b> BD: </b> @ViewBag.AmbienteBD</h4>
+                    </div>
+                    <hr />
+                    <div>
+                        <b> Secuencial Facturas: </b> @ViewBag.SecuencialFC   <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-original-title="En este secuencial inician los registros del documento de Facturas."></span>
+                    </div>
+                    <div>
+                        <b> Secuencial Notas de Crédito: </b> @ViewBag.SecuencialNC   <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-original-title="En este secuencial inician los registros del documento de Notas de Crédito."></span>
+                    </div>
+
+
+                </center>
+
+            </div>
+        </div>
+        <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog-small">
+                <div class="modal-content">
+                    <div class="modal-body" style="text-align: center">
+                        <img src="~/Content/images/cargando.gif" alt="No sale :(" width="50" height="50" />
+                    </div>
+                    <div class="login-header">Cargando...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/main/vendor/jquery/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Content/main/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Content/main/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Content/main/vendor/raphael/raphael.min.js"></script>
+    <script src="~/Content/main/vendor/morrisjs/morris.min.js"></script>
+    @*<script src="~/Content/main/data/morris-data.js"></script>*@
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Content/main/dist/js/sb-admin-2.min.js"></script>
+    <script src="~/Scripts/View/Shared.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <script src="~/Content/main/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/main/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/Content/main/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <!-- DataTable-->
+    <script src="~/Content/select/dist/js/bootstrap-select.js"></script>
+    <script src="~/Content/main/datetime/moment.min.js"></script>
+    <script src="~/Content/main/datetime/datetime.js"></script>
+    <script src="~/Content/main/select/js/bootstrap-multiselect.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.StartLayout();
+
+            $("#idMenuSalir").bind("click", function () {
+                $("#exitForm").trigger("submit");
+            });
+
+            $('[data-toggle="tooltip"]').tooltip({
+                placement: 'top'
+            });
+        });
+    </script>
+</body>
+</html>

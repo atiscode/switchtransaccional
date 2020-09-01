@@ -1,0 +1,815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SwitchAtiscodeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AtisAPIConfiguracionEntorno">
+          <Key>
+            <PropertyRef Name="AtisAPIConfiguracionEntornoID" />
+          </Key>
+          <Property Name="AtisAPIConfiguracionEntornoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Protocolo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="URLServidor" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Puerto" Type="int" Nullable="false" />
+          <Property Name="URLDirectorio" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="TipoAmbiente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="AtisAplicacionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AtisAplicacion">
+          <Key>
+            <PropertyRef Name="AtisAplicacionID" />
+          </Key>
+          <Property Name="AtisAplicacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="EmpresaSwitchTransaccionesID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AtisLogTran">
+          <Key>
+            <PropertyRef Name="IdLogTran" />
+          </Key>
+          <Property Name="IdLogTran" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroDocumento" Type="varchar" MaxLength="50" />
+          <Property Name="TramaEntrada" Type="ntext" />
+          <Property Name="FechaEntrada" Type="datetime" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="TramaRespuesta" Type="ntext" />
+          <Property Name="FechaSalida" Type="datetime" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Secuencial" Type="varchar" MaxLength="50" />
+          <Property Name="Canal" Type="varchar" MaxLength="50" />
+          <Property Name="TipoSolicitud" Type="int" />
+        </EntityType>
+        <EntityType Name="AtisQueueTransactions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectRequest" Type="ntext" Nullable="false" />
+          <Property Name="Sequential" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Channel" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TypeDocument" Type="varchar" MaxLength="200" />
+          <Property Name="DateStart" Type="datetime" Nullable="false" />
+          <Property Name="DateEnd" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Ready" Type="bit" Nullable="false" />
+          <Property Name="ExceptionsService" Type="varchar(max)" />
+          <Property Name="RequestXML" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AtisSafiCredenciales">
+          <Key>
+            <PropertyRef Name="AtisSafiCredencialesID" />
+          </Key>
+          <Property Name="AtisSafiCredencialesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostmanToken" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="CacheControl" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="33" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="GrantType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Establecimiento" Type="nvarchar" MaxLength="10" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="RUC" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DireccionMatriz" Type="nvarchar" MaxLength="300" />
+          <Property Name="TributaImpuesto" Type="bit" Nullable="false" />
+          <Property Name="Contribuyente" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="20" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="EmpresaSwitchTransacciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdSwitchTransacciones" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SwitchTransacciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Segmento" Type="nvarchar" MaxLength="100" />
+          <Property Name="PtoEmi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ambiente" Type="int" />
+          <Property Name="Iva" Type="int" />
+          <Property Name="CodProducto" Type="nvarchar" MaxLength="10" />
+          <Property Name="NombProducto" Type="nvarchar" MaxLength="300" />
+          <Property Name="CategoriaCliente" Type="nvarchar" MaxLength="300" />
+          <Property Name="CuentaContable" Type="nvarchar" MaxLength="50" />
+          <Property Name="GrupoCredito" Type="int" />
+          <Property Name="DocumentoElectronico" Type="int" />
+          <Property Name="Relacionado" Type="int" />
+          <Property Name="VendedorSeccion" Type="nvarchar" MaxLength="10" />
+          <Property Name="ListaPrecioContado" Type="nvarchar" MaxLength="20" />
+          <Property Name="ListaPrecioCredito" Type="nvarchar" MaxLength="20" />
+          <Property Name="LimiteCredito" Type="int" />
+          <Property Name="Uge" Type="nvarchar" MaxLength="10" />
+          <Property Name="Bodega" Type="nvarchar" MaxLength="10" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="10" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_AtisAPIConfiguracionEntorno_AtisAplicacion">
+          <End Role="AtisAplicacion" Type="Self.AtisAplicacion" Multiplicity="1" />
+          <End Role="AtisAPIConfiguracionEntorno" Type="Self.AtisAPIConfiguracionEntorno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AtisAplicacion">
+              <PropertyRef Name="AtisAplicacionID" />
+            </Principal>
+            <Dependent Role="AtisAPIConfiguracionEntorno">
+              <PropertyRef Name="AtisAplicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AtisAplicacion_EmpresaSwitchTransacciones">
+          <End Role="EmpresaSwitchTransacciones" Type="Self.EmpresaSwitchTransacciones" Multiplicity="1" />
+          <End Role="AtisAplicacion" Type="Self.AtisAplicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmpresaSwitchTransacciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtisAplicacion">
+              <PropertyRef Name="EmpresaSwitchTransaccionesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpresaSwitchTransacciones_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="EmpresaSwitchTransacciones" Type="Self.EmpresaSwitchTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="EmpresaSwitchTransacciones">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpresaSwitchTransacciones_SwitchTransacciones">
+          <End Role="SwitchTransacciones" Type="Self.SwitchTransacciones" Multiplicity="1" />
+          <End Role="EmpresaSwitchTransacciones" Type="Self.EmpresaSwitchTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SwitchTransacciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpresaSwitchTransacciones">
+              <PropertyRef Name="IdSwitchTransacciones" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ConsultarConfiguracionPrincipal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="iNombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarElancesWebServicesAmbiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="iNombreAplicacion" Type="varchar" Mode="In" />
+          <Parameter Name="iTipoAmbiente" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarSecuencialCanal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="iCanal" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ListarAplicaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListarEmpresaSwitchTransacciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="iRazonSocial" Type="nvarchar" Mode="In" />
+          <Parameter Name="iSegmento" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SwitchAtiscodeModelStoreContainer">
+          <EntitySet Name="AtisAPIConfiguracionEntorno" EntityType="Self.AtisAPIConfiguracionEntorno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AtisAplicacion" EntityType="Self.AtisAplicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AtisLogTran" EntityType="Self.AtisLogTran" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AtisQueueTransactions" EntityType="Self.AtisQueueTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AtisSafiCredenciales" EntityType="Self.AtisSafiCredenciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpresaSwitchTransacciones" EntityType="Self.EmpresaSwitchTransacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SwitchTransacciones" EntityType="Self.SwitchTransacciones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AtisAPIConfiguracionEntorno_AtisAplicacion" Association="Self.FK_AtisAPIConfiguracionEntorno_AtisAplicacion">
+            <End Role="AtisAplicacion" EntitySet="AtisAplicacion" />
+            <End Role="AtisAPIConfiguracionEntorno" EntitySet="AtisAPIConfiguracionEntorno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AtisAplicacion_EmpresaSwitchTransacciones" Association="Self.FK_AtisAplicacion_EmpresaSwitchTransacciones">
+            <End Role="EmpresaSwitchTransacciones" EntitySet="EmpresaSwitchTransacciones" />
+            <End Role="AtisAplicacion" EntitySet="AtisAplicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpresaSwitchTransacciones_Empresa" Association="Self.FK_EmpresaSwitchTransacciones_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="EmpresaSwitchTransacciones" EntitySet="EmpresaSwitchTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpresaSwitchTransacciones_SwitchTransacciones" Association="Self.FK_EmpresaSwitchTransacciones_SwitchTransacciones">
+            <End Role="SwitchTransacciones" EntitySet="SwitchTransacciones" />
+            <End Role="EmpresaSwitchTransacciones" EntitySet="EmpresaSwitchTransacciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SwitchAtiscodeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SwitchAtiscodeEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="ConsultarConfiguracionPrincipal" ReturnType="Collection(SwitchAtiscodeModel.ConfiguracionPrincipalInfo)">
+          <Parameter Name="iNombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarElancesWebServicesAmbiente" ReturnType="Collection(SwitchAtiscodeModel.ElancesWebServicesAmbienteInfo)">
+            <Parameter Name="iNombreAplicacion" Mode="In" Type="String" />
+            <Parameter Name="iTipoAmbiente" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListarAplicaciones" ReturnType="Collection(SwitchAtiscodeModel.AplicacionesInfo)" />
+          <EntitySet Name="AtisAPIConfiguracionEntorno" EntityType="SwitchAtiscodeModel.AtisAPIConfiguracionEntorno" />
+          <EntitySet Name="AtisAplicacion" EntityType="SwitchAtiscodeModel.AtisAplicacion" />
+          <EntitySet Name="AtisSafiCredenciales" EntityType="SwitchAtiscodeModel.AtisSafiCredenciales" />
+          <EntitySet Name="Empresa" EntityType="SwitchAtiscodeModel.Empresa" />
+          <EntitySet Name="EmpresaSwitchTransacciones" EntityType="SwitchAtiscodeModel.EmpresaSwitchTransacciones" />
+          <EntitySet Name="SwitchTransacciones" EntityType="SwitchAtiscodeModel.SwitchTransacciones" />
+          <AssociationSet Name="FK_AtisAPIConfiguracionEntorno_AtisAplicacion" Association="SwitchAtiscodeModel.FK_AtisAPIConfiguracionEntorno_AtisAplicacion">
+            <End Role="AtisAplicacion" EntitySet="AtisAplicacion" />
+            <End Role="AtisAPIConfiguracionEntorno" EntitySet="AtisAPIConfiguracionEntorno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AtisAplicacion_EmpresaSwitchTransacciones" Association="SwitchAtiscodeModel.FK_AtisAplicacion_EmpresaSwitchTransacciones">
+            <End Role="EmpresaSwitchTransacciones" EntitySet="EmpresaSwitchTransacciones" />
+            <End Role="AtisAplicacion" EntitySet="AtisAplicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpresaSwitchTransacciones_Empresa" Association="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="EmpresaSwitchTransacciones" EntitySet="EmpresaSwitchTransacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpresaSwitchTransacciones_SwitchTransacciones" Association="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_SwitchTransacciones">
+            <End Role="SwitchTransacciones" EntitySet="SwitchTransacciones" />
+            <End Role="EmpresaSwitchTransacciones" EntitySet="EmpresaSwitchTransacciones" />
+          </AssociationSet>
+          <FunctionImport Name="ListarEmpresaSwitchTransacciones" ReturnType="Collection(SwitchAtiscodeModel.EmpresaSwitchTransaccionesInfo)">
+            <Parameter Name="iRazonSocial" Mode="In" Type="String" />
+            <Parameter Name="iSegmento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarSecuencialCanal" ReturnType="Collection(SwitchAtiscodeModel.SecuencialCanalInfo)">
+          <Parameter Name="iCanal" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="AtisLogTran" EntityType="SwitchAtiscodeModel.AtisLogTran" />
+          <EntitySet Name="AtisQueueTransactions" EntityType="SwitchAtiscodeModel.AtisQueueTransactions" />
+          </EntityContainer>
+        <ComplexType Name="ConfiguracionPrincipalInfo">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="EstadoSwitchTransaccion" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PtoEmi" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Ambiente" Nullable="true" />
+          <Property Type="Int32" Name="Iva" Nullable="true" />
+          <Property Type="String" Name="RazonSocial" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="CodProducto" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NombProducto" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CategoriaCliente" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CuentaContable" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="GrupoCredito" Nullable="true" />
+          <Property Type="String" Name="TributaImpuesto" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="DocumentoElectronico" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Relacionado" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="VendedorSeccion" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ListaPrecioContado" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ListaPrecioCredito" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="LimiteCredito" Nullable="true" />
+          <Property Type="String" Name="Uge" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Bodega" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Contribuyente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="AtisAplicacionID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="EstadoAplicacion" Nullable="false" />
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="Establecimiento" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RUC" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="DireccionMatriz" Nullable="true" MaxLength="300" />
+          <Property Type="Int64" Name="IdSwitchTransacciones" Nullable="false" />
+          <Property Type="Int32" Name="Estado" Nullable="false" />
+          <Property Type="Int32" Name="EmpresaSwitchTransaccionesID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ElancesWebServicesAmbienteInfo">
+          <Property Type="Int32" Name="AtisAPIConfiguracionEntornoID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="URLServidor" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="UrlAPI" Nullable="false" MaxLength="88" />
+          <Property Type="String" Name="TipoAmbiente" Nullable="false" MaxLength="10" />
+          <Property Type="Boolean" Name="EstadoConfiguracion" Nullable="false" />
+          <Property Type="String" Name="NombreAplicacion" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DescripcionAplicacion" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="EstadoAplicacion" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="AplicacionesInfo">
+          <Property Type="Int32" Name="AtisAplicacionID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="RazonSocial" Nullable="false" MaxLength="300" />
+        </ComplexType>
+        <EntityType Name="AtisAPIConfiguracionEntorno">
+          <Key>
+            <PropertyRef Name="AtisAPIConfiguracionEntornoID" />
+          </Key>
+          <Property Name="AtisAPIConfiguracionEntornoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Protocolo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="URLServidor" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Puerto" Type="Int32" Nullable="false" />
+          <Property Name="URLDirectorio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoAmbiente" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="AtisAplicacionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AtisAplicacion" Relationship="SwitchAtiscodeModel.FK_AtisAPIConfiguracionEntorno_AtisAplicacion" FromRole="AtisAPIConfiguracionEntorno" ToRole="AtisAplicacion" />
+        </EntityType>
+        <EntityType Name="AtisAplicacion">
+          <Key>
+            <PropertyRef Name="AtisAplicacionID" />
+          </Key>
+          <Property Name="AtisAplicacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="EmpresaSwitchTransaccionesID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AtisAPIConfiguracionEntorno" Relationship="SwitchAtiscodeModel.FK_AtisAPIConfiguracionEntorno_AtisAplicacion" FromRole="AtisAplicacion" ToRole="AtisAPIConfiguracionEntorno" />
+          <NavigationProperty Name="EmpresaSwitchTransacciones" Relationship="SwitchAtiscodeModel.FK_AtisAplicacion_EmpresaSwitchTransacciones" FromRole="AtisAplicacion" ToRole="EmpresaSwitchTransacciones" />
+        </EntityType>
+        <EntityType Name="AtisSafiCredenciales">
+          <Key>
+            <PropertyRef Name="AtisSafiCredencialesID" />
+          </Key>
+          <Property Name="AtisSafiCredencialesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostmanToken" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="CacheControl" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="33" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Anio" Type="Int32" Nullable="false" />
+          <Property Name="GrantType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Establecimiento" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="RUC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DireccionMatriz" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TributaImpuesto" Type="Boolean" Nullable="false" />
+          <Property Name="Contribuyente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmpresaSwitchTransacciones" Relationship="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_Empresa" FromRole="Empresa" ToRole="EmpresaSwitchTransacciones" />
+        </EntityType>
+        <EntityType Name="EmpresaSwitchTransacciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdSwitchTransacciones" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="AtisAplicacion" Relationship="SwitchAtiscodeModel.FK_AtisAplicacion_EmpresaSwitchTransacciones" FromRole="EmpresaSwitchTransacciones" ToRole="AtisAplicacion" />
+          <NavigationProperty Name="Empresa" Relationship="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_Empresa" FromRole="EmpresaSwitchTransacciones" ToRole="Empresa" />
+          <NavigationProperty Name="SwitchTransacciones" Relationship="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_SwitchTransacciones" FromRole="EmpresaSwitchTransacciones" ToRole="SwitchTransacciones" />
+        </EntityType>
+        <EntityType Name="SwitchTransacciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Segmento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PtoEmi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ambiente" Type="Int32" />
+          <Property Name="Iva" Type="Int32" />
+          <Property Name="CodProducto" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NombProducto" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CategoriaCliente" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CuentaContable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GrupoCredito" Type="Int32" />
+          <Property Name="DocumentoElectronico" Type="Int32" />
+          <Property Name="Relacionado" Type="Int32" />
+          <Property Name="VendedorSeccion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ListaPrecioContado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ListaPrecioCredito" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LimiteCredito" Type="Int32" />
+          <Property Name="Uge" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Bodega" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmpresaSwitchTransacciones" Relationship="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_SwitchTransacciones" FromRole="SwitchTransacciones" ToRole="EmpresaSwitchTransacciones" />
+        </EntityType>
+        <Association Name="FK_AtisAPIConfiguracionEntorno_AtisAplicacion">
+          <End Type="SwitchAtiscodeModel.AtisAplicacion" Role="AtisAplicacion" Multiplicity="1" />
+          <End Type="SwitchAtiscodeModel.AtisAPIConfiguracionEntorno" Role="AtisAPIConfiguracionEntorno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AtisAplicacion">
+              <PropertyRef Name="AtisAplicacionID" />
+            </Principal>
+            <Dependent Role="AtisAPIConfiguracionEntorno">
+              <PropertyRef Name="AtisAplicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AtisAplicacion_EmpresaSwitchTransacciones">
+          <End Type="SwitchAtiscodeModel.EmpresaSwitchTransacciones" Role="EmpresaSwitchTransacciones" Multiplicity="1" />
+          <End Type="SwitchAtiscodeModel.AtisAplicacion" Role="AtisAplicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmpresaSwitchTransacciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtisAplicacion">
+              <PropertyRef Name="EmpresaSwitchTransaccionesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpresaSwitchTransacciones_Empresa">
+          <End Type="SwitchAtiscodeModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="SwitchAtiscodeModel.EmpresaSwitchTransacciones" Role="EmpresaSwitchTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="EmpresaSwitchTransacciones">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpresaSwitchTransacciones_SwitchTransacciones">
+          <End Type="SwitchAtiscodeModel.SwitchTransacciones" Role="SwitchTransacciones" Multiplicity="1" />
+          <End Type="SwitchAtiscodeModel.EmpresaSwitchTransacciones" Role="EmpresaSwitchTransacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SwitchTransacciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpresaSwitchTransacciones">
+              <PropertyRef Name="IdSwitchTransacciones" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="EmpresaSwitchTransaccionesInfo">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+          <Property Type="String" Name="Establecimiento" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RazonSocial" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="RUC" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="DireccionMatriz" Nullable="true" MaxLength="300" />
+          <Property Type="Boolean" Name="TributaImpuesto" Nullable="false" />
+          <Property Type="String" Name="Contribuyente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+          <Property Type="Int64" Name="IdSwitchTransacciones" Nullable="false" />
+          <Property Type="Int32" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PtoEmi" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Ambiente" Nullable="true" />
+          <Property Type="Int32" Name="Iva" Nullable="true" />
+          <Property Type="String" Name="CodProducto" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NombProducto" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CategoriaCliente" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CuentaContable" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="GrupoCredito" Nullable="true" />
+          <Property Type="Int32" Name="DocumentoElectronico" Nullable="true" />
+          <Property Type="Int32" Name="Relacionado" Nullable="true" />
+          <Property Type="String" Name="VendedorSeccion" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ListaPrecioContado" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ListaPrecioCredito" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="LimiteCredito" Nullable="true" />
+          <Property Type="String" Name="Uge" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Bodega" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="SecuencialCanalInfo">
+          <Property Type="Int64" Name="SecuencialFacturas" Nullable="true" />
+          <Property Type="Int64" Name="SecuencialNotaCredito" Nullable="true" />
+          <Property Type="Int64" Name="SecuencialCotizaciones" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="AtisLogTran">
+          <Key>
+            <PropertyRef Name="IdLogTran" />
+          </Key>
+          <Property Name="IdLogTran" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TramaEntrada" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEntrada" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TramaRespuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaSalida" Type="DateTime" Precision="3" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Secuencial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Canal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoSolicitud" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AtisQueueTransactions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectRequest" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sequential" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Channel" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Ready" Type="Boolean" Nullable="false" />
+          <Property Name="ExceptionsService" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TypeDocument" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RequestXML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SwitchAtiscodeModelStoreContainer" CdmEntityContainer="SwitchAtiscodeEntities">
+          <FunctionImportMapping FunctionImportName="ConsultarConfiguracionPrincipal" FunctionName="SwitchAtiscodeModel.Store.ConsultarConfiguracionPrincipal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SwitchAtiscodeModel.ConfiguracionPrincipalInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EstadoSwitchTransaccion" ColumnName="EstadoSwitchTransaccion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="PtoEmi" ColumnName="PtoEmi" />
+                <ScalarProperty Name="Ambiente" ColumnName="Ambiente" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="NombProducto" ColumnName="NombProducto" />
+                <ScalarProperty Name="CategoriaCliente" ColumnName="CategoriaCliente" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="GrupoCredito" ColumnName="GrupoCredito" />
+                <ScalarProperty Name="TributaImpuesto" ColumnName="TributaImpuesto" />
+                <ScalarProperty Name="DocumentoElectronico" ColumnName="DocumentoElectronico" />
+                <ScalarProperty Name="Relacionado" ColumnName="Relacionado" />
+                <ScalarProperty Name="VendedorSeccion" ColumnName="VendedorSeccion" />
+                <ScalarProperty Name="ListaPrecioContado" ColumnName="ListaPrecioContado" />
+                <ScalarProperty Name="ListaPrecioCredito" ColumnName="ListaPrecioCredito" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="Uge" ColumnName="Uge" />
+                <ScalarProperty Name="Bodega" ColumnName="Bodega" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Contribuyente" ColumnName="Contribuyente" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="AtisAplicacionID" ColumnName="AtisAplicacionID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="EstadoAplicacion" ColumnName="EstadoAplicacion" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="DireccionMatriz" ColumnName="DireccionMatriz" />
+                <ScalarProperty Name="IdSwitchTransacciones" ColumnName="IdSwitchTransacciones" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EmpresaSwitchTransaccionesID" ColumnName="EmpresaSwitchTransaccionesID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarElancesWebServicesAmbiente" FunctionName="SwitchAtiscodeModel.Store.ConsultarElancesWebServicesAmbiente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SwitchAtiscodeModel.ElancesWebServicesAmbienteInfo">
+                <ScalarProperty Name="AtisAPIConfiguracionEntornoID" ColumnName="AtisAPIConfiguracionEntornoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="URLServidor" ColumnName="URLServidor" />
+                <ScalarProperty Name="UrlAPI" ColumnName="UrlAPI" />
+                <ScalarProperty Name="TipoAmbiente" ColumnName="TipoAmbiente" />
+                <ScalarProperty Name="EstadoConfiguracion" ColumnName="EstadoConfiguracion" />
+                <ScalarProperty Name="NombreAplicacion" ColumnName="NombreAplicacion" />
+                <ScalarProperty Name="DescripcionAplicacion" ColumnName="DescripcionAplicacion" />
+                <ScalarProperty Name="EstadoAplicacion" ColumnName="EstadoAplicacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListarAplicaciones" FunctionName="SwitchAtiscodeModel.Store.ListarAplicaciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SwitchAtiscodeModel.AplicacionesInfo">
+                <ScalarProperty Name="AtisAplicacionID" ColumnName="AtisAplicacionID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AtisAPIConfiguracionEntorno">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.AtisAPIConfiguracionEntorno">
+              <MappingFragment StoreEntitySet="AtisAPIConfiguracionEntorno">
+                <ScalarProperty Name="AtisAplicacionID" ColumnName="AtisAplicacionID" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="TipoAmbiente" ColumnName="TipoAmbiente" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="URLDirectorio" ColumnName="URLDirectorio" />
+                <ScalarProperty Name="Puerto" ColumnName="Puerto" />
+                <ScalarProperty Name="URLServidor" ColumnName="URLServidor" />
+                <ScalarProperty Name="Protocolo" ColumnName="Protocolo" />
+                <ScalarProperty Name="AtisAPIConfiguracionEntornoID" ColumnName="AtisAPIConfiguracionEntornoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AtisAplicacion">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.AtisAplicacion">
+              <MappingFragment StoreEntitySet="AtisAplicacion">
+                <ScalarProperty Name="EmpresaSwitchTransaccionesID" ColumnName="EmpresaSwitchTransaccionesID" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="AtisAplicacionID" ColumnName="AtisAplicacionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AtisSafiCredenciales">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.AtisSafiCredenciales">
+              <MappingFragment StoreEntitySet="AtisSafiCredenciales">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="GrantType" ColumnName="GrantType" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="CacheControl" ColumnName="CacheControl" />
+                <ScalarProperty Name="PostmanToken" ColumnName="PostmanToken" />
+                <ScalarProperty Name="AtisSafiCredencialesID" ColumnName="AtisSafiCredencialesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Contribuyente" ColumnName="Contribuyente" />
+                <ScalarProperty Name="TributaImpuesto" ColumnName="TributaImpuesto" />
+                <ScalarProperty Name="DireccionMatriz" ColumnName="DireccionMatriz" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpresaSwitchTransacciones">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.EmpresaSwitchTransacciones">
+              <MappingFragment StoreEntitySet="EmpresaSwitchTransacciones">
+                <ScalarProperty Name="IdSwitchTransacciones" ColumnName="IdSwitchTransacciones" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SwitchTransacciones">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.SwitchTransacciones">
+              <MappingFragment StoreEntitySet="SwitchTransacciones">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Bodega" ColumnName="Bodega" />
+                <ScalarProperty Name="Uge" ColumnName="Uge" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="ListaPrecioCredito" ColumnName="ListaPrecioCredito" />
+                <ScalarProperty Name="ListaPrecioContado" ColumnName="ListaPrecioContado" />
+                <ScalarProperty Name="VendedorSeccion" ColumnName="VendedorSeccion" />
+                <ScalarProperty Name="Relacionado" ColumnName="Relacionado" />
+                <ScalarProperty Name="DocumentoElectronico" ColumnName="DocumentoElectronico" />
+                <ScalarProperty Name="GrupoCredito" ColumnName="GrupoCredito" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="CategoriaCliente" ColumnName="CategoriaCliente" />
+                <ScalarProperty Name="NombProducto" ColumnName="NombProducto" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="Ambiente" ColumnName="Ambiente" />
+                <ScalarProperty Name="PtoEmi" ColumnName="PtoEmi" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ListarEmpresaSwitchTransacciones" FunctionName="SwitchAtiscodeModel.Store.ListarEmpresaSwitchTransacciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SwitchAtiscodeModel.EmpresaSwitchTransaccionesInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="DireccionMatriz" ColumnName="DireccionMatriz" />
+                <ScalarProperty Name="TributaImpuesto" ColumnName="TributaImpuesto" />
+                <ScalarProperty Name="Contribuyente" ColumnName="Contribuyente" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="IdSwitchTransacciones" ColumnName="IdSwitchTransacciones" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="PtoEmi" ColumnName="PtoEmi" />
+                <ScalarProperty Name="Ambiente" ColumnName="Ambiente" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="NombProducto" ColumnName="NombProducto" />
+                <ScalarProperty Name="CategoriaCliente" ColumnName="CategoriaCliente" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="GrupoCredito" ColumnName="GrupoCredito" />
+                <ScalarProperty Name="DocumentoElectronico" ColumnName="DocumentoElectronico" />
+                <ScalarProperty Name="Relacionado" ColumnName="Relacionado" />
+                <ScalarProperty Name="VendedorSeccion" ColumnName="VendedorSeccion" />
+                <ScalarProperty Name="ListaPrecioContado" ColumnName="ListaPrecioContado" />
+                <ScalarProperty Name="ListaPrecioCredito" ColumnName="ListaPrecioCredito" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="Uge" ColumnName="Uge" />
+                <ScalarProperty Name="Bodega" ColumnName="Bodega" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarSecuencialCanal" FunctionName="SwitchAtiscodeModel.Store.ConsultarSecuencialCanal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SwitchAtiscodeModel.SecuencialCanalInfo">
+                <ScalarProperty Name="SecuencialFacturas" ColumnName="SecuencialFacturas" />
+                <ScalarProperty Name="SecuencialNotaCredito" ColumnName="SecuencialNotaCredito" />
+                <ScalarProperty Name="SecuencialCotizaciones" ColumnName="SecuencialCotizaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AtisLogTran">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.AtisLogTran">
+              <MappingFragment StoreEntitySet="AtisLogTran">
+                <ScalarProperty Name="TipoSolicitud" ColumnName="TipoSolicitud" />
+                <ScalarProperty Name="Canal" ColumnName="Canal" />
+                <ScalarProperty Name="Secuencial" ColumnName="Secuencial" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+                <ScalarProperty Name="TramaRespuesta" ColumnName="TramaRespuesta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+                <ScalarProperty Name="TramaEntrada" ColumnName="TramaEntrada" />
+                <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+                <ScalarProperty Name="IdLogTran" ColumnName="IdLogTran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AtisQueueTransactions">
+            <EntityTypeMapping TypeName="SwitchAtiscodeModel.AtisQueueTransactions">
+              <MappingFragment StoreEntitySet="AtisQueueTransactions">
+                <ScalarProperty Name="RequestXML" ColumnName="RequestXML" />
+                <ScalarProperty Name="TypeDocument" ColumnName="TypeDocument" />
+                <ScalarProperty Name="ExceptionsService" ColumnName="ExceptionsService" />
+                <ScalarProperty Name="Ready" ColumnName="Ready" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="Sequential" ColumnName="Sequential" />
+                <ScalarProperty Name="ObjectRequest" ColumnName="ObjectRequest" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

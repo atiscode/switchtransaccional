@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="07a3c7a736d7410bace205171c149afb" Name="General">
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.AtisAPIConfiguracionEntorno" Width="1.5" PointX="9.375" PointY="0.625" />
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.AtisAplicacion" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.AtisSafiCredenciales" Width="1.5" PointX="8" PointY="4.875" />
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.Empresa" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.EmpresaSwitchTransacciones" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.SwitchTransacciones" Width="1.5" PointX="12.625" PointY="3.125" />
+        <AssociationConnector Association="SwitchAtiscodeModel.FK_AtisAPIConfiguracionEntorno_AtisAplicacion" />
+        <AssociationConnector Association="SwitchAtiscodeModel.FK_AtisAplicacion_EmpresaSwitchTransacciones" />
+        <AssociationConnector Association="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_Empresa" />
+        <AssociationConnector Association="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_SwitchTransacciones" />
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.AtisLogTran" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SwitchAtiscodeModel.AtisQueueTransactions" Width="1.5" PointX="0.75" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

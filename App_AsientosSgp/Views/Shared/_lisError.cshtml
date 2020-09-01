@@ -1,0 +1,151 @@
+﻿@model List<string>
+@{
+    var mensaje = Model != null ? Model.Count > 0 ? Model.Last() : "" : "";
+}
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+            "paging": false
+        });
+    });
+</script>
+<hr />
+<style>
+    table.blueTable {
+        border: 1px solid #1C6EA4;
+        background-color: #EEEEEE;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+
+        table.blueTable tbody td {
+            font-size: 13px;
+            /*overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;*/
+        }
+
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+
+        table.blueTable thead {
+            background: #1C6EA4;
+            background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            border-bottom: 2px solid #444444;
+        }
+
+            table.blueTable thead th {
+                font-size: 15px;
+                font-weight: bold;
+                color: #FFFFFF;
+                border-left: 2px solid #D0E4F5;
+            }
+
+                table.blueTable thead th:first-child {
+                    border-left: none;
+                }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+        }
+
+            table.blueTable tfoot td {
+                font-size: 14px;
+            }
+
+            table.blueTable tfoot .links {
+                text-align: right;
+            }
+
+                table.blueTable tfoot .links a {
+                    display: inline-block;
+                    background: #1C6EA4;
+                    color: #FFFFFF;
+                    padding: 2px 8px;
+                    border-radius: 5px;
+                }
+</style>
+<div class="container-fluid">
+
+    <table id="table_id" class="blueTable">
+        <thead>
+            <tr align="center">
+                <th align="center">N.</th>
+                <th align="center">Fila</th>
+                <th align="center">Descripción Error</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int contador = 1;
+            }
+            @foreach (var ele in Model)
+            {
+                @*<li class="col-sm-12 terror"><label class="control-label">@ele</label></li>*@
+                if (ele != Model.Last())
+                {
+                    <tr>
+                        @{
+                            var numeroFila = " - ";
+                            var posicionInicial = ele.IndexOf(':') ;
+                            var posicionFinal = ele.IndexOf('-') ;
+
+                            var posicionMensajeValidacion = ele.IndexOf(':');
+
+                            var mensajeErrorValidacion = "";
+
+                            if (posicionInicial != -1 && posicionFinal != -1)
+                            {
+                                numeroFila = ele.Substring(posicionInicial + 2, posicionFinal - 7);
+
+                                if (posicionMensajeValidacion != -1) {
+                                    mensajeErrorValidacion = ele.Substring(posicionMensajeValidacion + 5);
+                                }
+
+                            }
+                            else {
+                                mensajeErrorValidacion = ele;
+                            }
+
+                        }
+                        <td align="center">@contador</td>
+                        <td align="center">@numeroFila</td>
+                        <td align="left">@mensajeErrorValidacion</td>
+
+                    </tr>
+                    contador++;
+                }
+
+            }
+
+        </tbody>
+    </table>
+
+    <hr />
+    <div class="row">
+        <div class="col-lg-12">
+            <span class="label label-danger">@mensaje</span>
+        </div>
+    </div>
+
+
+
+</div>

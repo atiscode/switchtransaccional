@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "NotaCredito": {
+      "type": "object",
+      "properties": {
+        "Detalle": {
+          "type": "object",
+          "properties": {
+            "Idfactura": {
+              "type": "string"
+            },
+            "Motivo": {
+              "type": "string"
+            },
+            "Valor": {
+              "type": "number"
+            },
+            "Secuencial": {
+              "type": "string"
+            },
+            "DetalleNotaCredito": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "notacredito": {
+                      "type": "null"
+                    },
+                    "Cantidad": {
+                      "type": "integer"
+                    },
+                    "Detalle": {
+                      "type": "string"
+                    },
+                    "Valor": {
+                      "type": "number"
+                    },
+                    "SubTotal": {
+                      "type": "number"
+                    },
+                    "CodigoCategoria": {
+                      "type": "string"
+                    },
+                    "CodigoProducto": {
+                      "type": "string"
+                    },
+                    "RUCProveedor": {
+                      "type": "string"
+                    },
+                    "Proveedor": {
+                      "type": "string"
+                    },
+                    "CostoUnitario": {
+                      "type": "number"
+                    },
+                    "FechaVenta": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "notacredito",
+                    "Cantidad",
+                    "Detalle",
+                    "Valor",
+                    "SubTotal",
+                    "CodigoCategoria",
+                    "CodigoProducto",
+                    "RUCProveedor",
+                    "Proveedor",
+                    "CostoUnitario",
+                    "FechaVenta"
+                  ]
+                }
+              ]
+            },
+            "Estado": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "Idfactura",
+            "Motivo",
+            "Valor",
+            "Secuencial",
+            "DetalleNotaCredito",
+            "Estado"
+          ]
+        }
+      },
+      "required": [
+        "Detalle"
+      ]
+    }
+  },
+  "required": [
+    "NotaCredito"
+  ]
+}
