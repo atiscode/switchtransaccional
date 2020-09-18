@@ -177,7 +177,8 @@ namespace App_Mundial_Miles.Controllers
                     TramaRespuesta = string.Empty,
                     FechaSalida = DateTime.Now,
                     Tipo = TipoDocumento,
-                    Secuencial = wrapper?.Detalle?.Factura?.Secuencial ?? string.Empty,
+                    //Secuencial = wrapper?.Detalle?.Factura?.Secuencial ?? string.Empty,
+                    Secuencial = wrapper != null ? (modelLog.ValidarSecuencialNumerico(wrapper?.Detalle?.Factura?.Secuencial) ? wrapper.Detalle.Factura.Secuencial : string.Empty ): string.Empty,
                     Canal = segmento
                 });
 
@@ -207,7 +208,6 @@ namespace App_Mundial_Miles.Controllers
                 }
                 #endregion
 
-
                 //Check validations
                 string validationsMessages = await Validations(wrapper);
                 bool validationOk = string.IsNullOrEmpty(validationsMessages);
@@ -234,7 +234,7 @@ namespace App_Mundial_Miles.Controllers
                     return response;
                 }
 
-                string numberDocumentFound = await modelLog.ExistSequentialAtisLogTran(wrapper.Detalle.Factura.Secuencial, TipoDocumento, wrapper.Cabecera.Cliente.Segmento);
+                string numberDocumentFound = !wrapper.EsCargaDocumentos ?  await modelLog.ExistSequentialAtisLogTran(wrapper.Detalle.Factura.Secuencial, TipoDocumento, wrapper.Cabecera.Cliente.Segmento) : string.Empty;
                 if (!string.IsNullOrEmpty(numberDocumentFound))
                 {
                     trackingLog = new ResponseSwitchAPI() { mensaje = string.Format("El secuencial ya existe en la factura : {0}", numberDocumentFound), codigoRetorno = "200", estado = HttpStatusCode.OK.ToString(), numeroDocumento = numberDocumentFound };

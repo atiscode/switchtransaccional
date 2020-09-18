@@ -154,6 +154,8 @@ namespace AtisCode.Aplicacion
                     { "Vendedor", ConfigurationManager.AppSettings["VendedorSeccion"].ToString()},
                     { "Clave",wrapper.Cabecera.Cliente.Identificacion},
                     { "UGE",ConfigurationManager.AppSettings["UGE"]},
+
+
                     { "Vencimiento",wrapper.Cabecera.CotizacionDetalle.Vencimiento/*"23/05/2019"*/},//Campos específicos para cotización
                     { "Plazo_Dias",wrapper.Cabecera.CotizacionDetalle.PlazoDias/*"0"*/},//Campos específicos para cotización
                     { "NoOp","VENTAS"},//Campos nuevo WS actualizacion
@@ -275,6 +277,164 @@ namespace AtisCode.Aplicacion
                 logger.Error(ex, "Stopped program because of exception");
             }
             return res;
+
+        }
+
+
+        public  async Task<string> GetCotizationAsync(Wrapper wrapper, string codFactura)
+        {
+            return await Task.Run(() =>
+            {
+                var res = string.Empty;
+            try
+            {
+                var fechaEmision = DateTime.Now;
+                var iva = ConfigurationManager.AppSettings["iva"] != null ? decimal.Parse(ConfigurationManager.AppSettings["iva"]) : 0;
+                if (wrapper?.Detalle?.Factura?.DetalleFactura != null)
+                {
+                    // Tipos de documentos de identificacion
+                    var identComp = "05";
+                    if (wrapper.Cabecera.Cliente.Identificacion.Length == 10)
+                        identComp = "05";
+                    else if (wrapper.Cabecera.Cliente.Identificacion.Length == 13)
+                        identComp = "04";
+                    else identComp = "06";
+
+                    if (wrapper.Cabecera.Cliente.Identificacion == "9999999999999")
+                        identComp = "07";
+
+                    var infoAd = new Dictionary<string, string> {
+                    { "email",wrapper.Cabecera.Cliente.Mail},
+                 { "Direccion",!string.IsNullOrEmpty(wrapper.Cabecera.Cliente.Direccion)?wrapper.Cabecera.Cliente.Direccion:ConfigurationManager.AppSettings["dirMatriz"].ToString()},
+                  { "Telefono",!string.IsNullOrEmpty(wrapper.Cabecera.Cliente.Telefono)?wrapper.Cabecera.Cliente.Telefono:ConfigurationManager.AppSettings["Telefono"].ToString()},
+                  { "COMENTARIO1","Comentario 1"},//Campos específicos para cotización
+                    { "Vendedor", ConfigurationManager.AppSettings["VendedorSeccion"].ToString()},
+                    { "Clave",wrapper.Cabecera.Cliente.Identificacion},
+                    { "UGE",ConfigurationManager.AppSettings["UGE"]},
+
+
+                    { "Vencimiento",wrapper.Cabecera.CotizacionDetalle.Vencimiento/*"23/05/2019"*/},//Campos específicos para cotización
+                    { "Plazo_Dias",wrapper.Cabecera.CotizacionDetalle.PlazoDias/*"0"*/},//Campos específicos para cotización
+                    { "NoOp","VENTAS"},//Campos nuevo WS actualizacion
+                    { "fhcoment",wrapper.Cabecera.CotizacionDetalle.FhComent/*"fh coment prueba"*/},//Campos específicos para cotización
+                    { "fhcoment1",wrapper.Cabecera.CotizacionDetalle.FhComent1/*"fh coment1 prueba"*/},//Campos específicos para cotización
+                    { "fhcoment2",wrapper.Cabecera.CotizacionDetalle.FhComent2/*"fh coment2 prueba"*/},//Campos específicos para cotización
+                };
+
+                    //Comentario1 = worksheet.GetValue(row, 11).ToString(),
+                    //                FhComent = worksheet.GetValue(row, 12).ToString(),
+                    //                FhComent1 = worksheet.GetValue(row, 13).ToString(),
+                    //                FhComent2 = worksheet.GetValue(row, 14).ToString(),
+                    //                Bodega = worksheet.GetValue(row, 15).ToString(),
+
+                    var vIvaFact = ((wrapper.Detalle.Factura.SubTotal - wrapper.Detalle.Factura.Descuento) * iva / 100);
+                    var baseImponible = wrapper.Detalle.Factura.SubTotal - wrapper.Detalle.Factura.Descuento;
+
+                    var listTotalImpuesto = new List<totalImpuesto>();
+                    var totalImp = new totalImpuesto
+                    {
+                        codigo = "2",
+                        codigoPorcentaje = GetCodigoImpuesto(iva).ToString(),
+                        baseImponible = baseImponible.ToString("N2").Replace(".", "").Replace(",", "."),//wrapper.Detalle.Factura.SubTotal.ToString("N2").Replace(".", "").Replace(",", "."),
+                        valor = vIvaFact.ToString("N2").Replace(".", "").Replace(",", ".")
+                    };
+                    listTotalImpuesto.Add(totalImp);
+
+                    var listPagos = new List<pago>();
+                    var tpago = new pago
+                    {
+                        formaPago = "20",//ConfigurationManager.AppSettings["FormaPago"].ToString(), //"19",
+                        total = wrapper.Detalle.Factura.Total.ToString("N2").Replace(".", "").Replace(",", "."),
+                        plazo = "0", // Parametrizar
+                        unidadTiempo = "dias" // Parametrizar
+                    };
+                    listPagos.Add(tpago);
+                    var listDetalles = new List<detalle>();
+                    foreach (var ele in wrapper.Detalle.Factura.DetalleFactura)
+                    {
+                        var detAdd = new List<detAdicional>
+                    {
+                        new detAdicional{nombre = "Bodega",valor=wrapper.Cabecera.CotizacionDetalle.Bodega/*ConfigurationManager.AppSettings["Bodega"].ToString()*/},
+                        new detAdicional{nombre = "COMENTARIO1",valor=wrapper.Cabecera.CotizacionDetalle.Comentario1},
+
+
+
+
+                        new detAdicional{nombre = "COMENTARIO2",valor=ele.CodigoProducto+","+wrapper.Cabecera.Cliente.Segmento}
+                    };
+                        var codigoImp = GetCodigoImpuesto(iva);
+                        var vIva = ((ele.CostoUnitario - ele.Descuento) * iva / 100);
+                        var detImp = new List<impuesto> {
+                        new impuesto
+                        {
+                            codigo="2",
+                            codigoPorcentaje=GetCodigoImpuesto(iva ).ToString(),
+                            tarifa=iva.ToString("N2").Replace(".", "").Replace(",", "."),
+                            baseImponible=ele.Total.ToString("N2").Replace(".", "").Replace(",", "."),//ele.SubTotal.ToString("N2").Replace(".", "").Replace(",", "."),
+                            valor=(vIva).ToString("N2").Replace(".", "").Replace(",", ".")
+                        }
+                    };
+                        var punit = ele.CostoUnitario;// / (1 + iva / 100);
+                        var det = new detalle
+                        {
+                            codigoPrincipal = ele.CodigoProducto,//ConfigurationManager.AppSettings["codProducto"],
+                            codigoAuxiliar = ele.CodigoProducto,//ConfigurationManager.AppSettings["codProducto"],
+                            descripcion = ConfigurationManager.AppSettings["nombProducto"],
+                            cantidad = ele.Cantidad.ToString(),
+                            precioUnitario = punit.ToString("N4").Replace(".", "").Replace(",", "."),
+                            descuento = ele.Descuento.ToString("N2").Replace(".", "").Replace(",", "."),//"0.00",
+                            precioTotalSinImpuesto = (ele.SubTotal).ToString("N2").Replace(".", "").Replace(",", "."),
+                            detallesAdicionales = detAdd,
+                            impuestos = detImp
+                        };
+                        listDetalles.Add(det);
+                    }
+                    var factura = new factura
+                    {
+                        id = "comprobante",
+                        version = "1.1.0",
+                        infoTributaria = new infoTributaria
+                        {
+                            ambiente = ConfigurationManager.AppSettings["ambiente"],
+                            tipoEmision = "1", // Revisar valor parametrizacion
+                            razonSocial = ConfigurationManager.AppSettings["razonSocial"],
+                            nombreComercial = ConfigurationManager.AppSettings["razonSocial"],
+                            ruc = ConfigurationManager.AppSettings["ruc"],
+                            claveAcceso = GetClaveAcceso(fechaEmision.Day.ToString().PadLeft(2, '0'), fechaEmision.Month.ToString().PadLeft(2, '0'), fechaEmision.Year.ToString().PadLeft(4, '0'), "01", ConfigurationManager.AppSettings["ruc"], ConfigurationManager.AppSettings["ambiente"], codFactura.Substring(0, 6), codFactura.Substring(6).PadLeft(9, '0'), "12345678", "1"),
+                            codDoc = "01",
+                            estab = ConfigurationManager.AppSettings["estab"],
+                            ptoEmi = "007",//ConfigurationManager.AppSettings["ptoEmi"],
+                            secuencial = codFactura.Substring(6).PadLeft(9, '0'),
+                            dirMatriz = ConfigurationManager.AppSettings["dirMatriz"],
+                        },
+                        infoFactura = new infoFactura
+                        {
+                            fechaEmision = fechaEmision.Day.ToString().PadLeft(2, '0') + "/" + fechaEmision.Month.ToString().PadLeft(2, '0') + "/" + fechaEmision.Year.ToString().PadLeft(4, '0'),
+                            obligadoContabilidad = "SI", // Verificar para parametrizacion
+                            tipoIdentificacionComprador = identComp,
+                            razonSocialComprador = wrapper.Cabecera.Cliente.NombreCliente,
+                            identificacionComprador = wrapper.Cabecera.Cliente.Identificacion,
+                            direccionComprador = wrapper.Cabecera.Cliente.Direccion,
+                            totalSinImpuestos = (wrapper.Detalle.Factura.SubTotal - wrapper.Detalle.Factura.Descuento).ToString("N2").Replace(".", "").Replace(",", "."), // TotalBruto - Descuento // wrapper.Detalle.Factura.SubTotal.ToString("N2").Replace(".", "").Replace(",", "."), // SUBTOTAL
+                            totalDescuento = wrapper.Detalle.Factura.Descuento.ToString("N2").Replace(".", "").Replace(",", "."), //"0.00",
+                            propina = "0.00",
+                            importeTotal = wrapper.Detalle.Factura.Total.ToString("N2").Replace(".", "").Replace(",", "."),
+                            moneda = "Dolar",
+                            totalConImpuestos = listTotalImpuesto,
+                            pagos = listPagos
+                        },
+                        detalles = listDetalles,
+                        infoAdicional = infoAd
+                    };
+                    res = GetXmlSnatShot(factura);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Stopped program because of exception");
+            }
+            return res;
+        });
         }
 
         #region Para carga factura detalles multiples
@@ -727,9 +887,20 @@ namespace AtisCode.Aplicacion
                     { "Vendedor",ConfigurationManager.AppSettings["VendedorSeccion"].ToString()},
                     { "Clave",wrapper.Cabecera.Cliente.Identificacion},
                     { "UGE",ConfigurationManager.AppSettings.Get("UGE")},
+
                     // Nuevo
                     { "NoOp","VENTAS"},
                 };
+
+                        //Agregar campos de cotizacion en caso de corresponder a una
+                        if (wrapper.Cabecera.CotizacionDetalle != null)
+                        {
+                            infoAd.Add("Vencimiento", wrapper.Cabecera.CotizacionDetalle.Vencimiento);
+                            infoAd.Add("Plazo_Dias", wrapper.Cabecera.CotizacionDetalle.PlazoDias);
+                            infoAd.Add("fhcoment", wrapper.Cabecera.CotizacionDetalle.FhComent);
+                            infoAd.Add("fhcoment1", wrapper.Cabecera.CotizacionDetalle.FhComent1);
+                            infoAd.Add("fhcoment2", wrapper.Cabecera.CotizacionDetalle.FhComent2);
+                        }
 
                         var vIvaFact = (wrapper.Detalle.Factura.SubTotal * iva / 100);
                         var listTotalImpuesto = new List<totalImpuesto>();

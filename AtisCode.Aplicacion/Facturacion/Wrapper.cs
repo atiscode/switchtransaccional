@@ -9,10 +9,16 @@ namespace AtisCode.Aplicacion
 {
     public partial class Wrapper
     {
+        public Wrapper()
+        {
+            EsCargaDocumentos = false; //Siempre false mientras no se especifique el parametro
+        }
+
         [Required]
         public Cabecera Cabecera { get; set; }
         [Required]
         public Detalle Detalle { get; set; }
+        public bool EsCargaDocumentos { get; set; }
     }
 
     public partial class Cabecera

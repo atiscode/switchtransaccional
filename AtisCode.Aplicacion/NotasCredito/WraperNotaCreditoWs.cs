@@ -13,8 +13,13 @@ namespace AtisCode.Aplicacion.NotasCredito
 {
     public partial class WraperNotaCreditoWs
     {
+        public WraperNotaCreditoWs()
+        {
+            EsCargaDocumentos = false;
+        }
         [Required]
         public CabeceraWs NotaCredito { get; set; }
+        public bool EsCargaDocumentos { get; set; }
     }
     public partial class CabeceraWs
     {

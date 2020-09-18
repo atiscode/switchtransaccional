@@ -244,6 +244,7 @@
     <Compile Include="Bussines\ReportesBussines.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CotizacionesController.cs" />
+    <Compile Include="Controllers\CotizationController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\NotaCreditoController.cs" />
     <Compile Include="Controllers\CargaNotasCreditoController.cs" />
