@@ -27,7 +27,8 @@ namespace App_Mundial_Miles.Controllers
         static string apiBaseUri = ConfigurationManager.AppSettings["apiBaseUri"].ToString();//"http://172.16.36.84:8081/safitoken";
         static string apiCostumerUri = ConfigurationManager.AppSettings["apiCostumerUri"].ToString();//"http://172.16.36.84:8082/api/migration";
         static string apiSalesCotization = ConfigurationManager.AppSettings["apiCotization"].ToString();
-        static string canal = ConfigurationManager.AppSettings["canal"].ToString();
+        static string canal = "GENERAL COTIZACIONES";
+        static string puntoEmisionCotizacion = "007";
 
         private static string TipoDocumento = "COTIZACIONES";
 
@@ -169,7 +170,7 @@ namespace App_Mundial_Miles.Controllers
         {
             DateTime startProcess = DateTime.Now; // Init process datetime
             string trama = JsonConvert.SerializeObject(wrapper); // Json  
-            string segmento = Tools.ReadSetting("segmento");
+            string segmento = canal;
             ResponseSwitchAPI trackingLog = new ResponseSwitchAPI();
 
             try
@@ -268,16 +269,16 @@ namespace App_Mundial_Miles.Controllers
 
                 startProcess = DateTime.Now;
                 string establecimiento = Tools.ReadSetting("estab");
-                string puntoEmision = Tools.ReadSetting("ptoEmi");
+                string puntoEmision = puntoEmisionCotizacion;
 
-                long secuencial = await modelTDoc.GetSequential("FC", segmento);
+                long secuencial = await modelTDoc.GetSequential("CT", "COTIZACION");
                 string numeroDocumento = string.Format("{0}{1}{2}", establecimiento, puntoEmision, secuencial.ToString().PadLeft(9, '0'));
 
                 var responseInvoice = await CreateCotization(wrapper, token, numeroDocumento);
 
                 if (responseInvoice.StatusCode == HttpStatusCode.OK)
                 {
-                    await modelTDoc.UpdateSequential("FC", segmento); // Update next document number sequential
+                    await modelTDoc.UpdateSequential("CT", "COTIZACION"); // Update next document number sequential
                     trackingLog = new ResponseSwitchAPI() { mensaje = "PROCESO OK", codigoRetorno = "200", estado = HttpStatusCode.OK.ToString(), numeroDocumento = numeroDocumento };
                     response = Request.CreateResponse(HttpStatusCode.OK, trackingLog);
                 }

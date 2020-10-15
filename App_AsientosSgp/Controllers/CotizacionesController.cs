@@ -198,6 +198,8 @@ namespace App_Mundial_Miles.Controllers
                                     FhComent1 = (worksheet.GetValue(row, 6) ?? "").ToString().Trim(),
                                     FhComent2 = (worksheet.GetValue(row, 7) ?? "").ToString().Trim(),
                                     Bodega = (worksheet.GetValue(row, 8) ?? "").ToString().Trim(),
+
+
                                     TelefonoCliente = "",
                                     ObservFactura = "",
                                     CantDetalle = (worksheet.GetValue(row, 10) ?? "").ToString().Trim(),

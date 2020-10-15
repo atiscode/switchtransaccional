@@ -107,6 +107,7 @@ namespace AtisCode.Aplicacion
         public decimal CostoUnitario { get; set; }
         [Required]
         public DateTime FechaVenta { get; set; }
+        public string FormaPago { get; set; }
     }
     public partial class FacturaCompleta
     {
