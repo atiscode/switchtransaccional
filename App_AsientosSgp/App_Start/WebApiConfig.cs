@@ -12,7 +12,7 @@ namespace App_Mundial_Miles.App_Start
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            //Configurar swagger
 
             // Web API routes
             config.MapHttpAttributeRoutes();
