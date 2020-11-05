@@ -1227,7 +1227,8 @@ namespace AtisCode.Aplicacion
                     var cadenas = wrapper.NotaCredito.Detalle.Idfactura.Split('-');
                     var codFact = cadenas.Count() > 2 ? cadenas[2] : "000000001";
                     var noFact = wrapper.NotaCredito.Detalle.Idfactura.Replace("-", "").Trim();
-                    var fact = _ctx.FACHIS.FirstOrDefault(t => t.FHFactura == noFact);
+                    //tomar la factura activa
+                    var fact = _ctx.FACHIS.FirstOrDefault(t => t.FHFactura == noFact && t.FHEstado == "ACT");
                     if (fact != null)
                     {
                         var cliente = _ctx.CXCDIR.FirstOrDefault(t => t.Ruc == fact.FHRuc);
@@ -1388,7 +1389,8 @@ namespace AtisCode.Aplicacion
                     var cadenas = wrapper.NotaCredito.Detalle.Idfactura.Split('-');
                     var codFact = cadenas.Count() > 2 ? cadenas[2] : "000000001";
                     var noFact = wrapper.NotaCredito.Detalle.Idfactura.Replace("-", "").Trim();
-                    var fact = _ctx.FACHIS.FirstOrDefault(t => t.FHFactura == noFact);
+                    //tomar la factura activa
+                    var fact = _ctx.FACHIS.FirstOrDefault(t => t.FHFactura == noFact && t.FHEstado == "ACT");
                     if (fact != null)
                     {
                         var cliente = _ctx.CXCDIR.FirstOrDefault(t => t.Ruc == fact.FHRuc);
@@ -1849,6 +1851,8 @@ namespace AtisCode.Aplicacion
                         {
                             foreach (var item in ele.impuestos)
                             {
+                                decimal totalValorImpuesto = (Convert.ToDecimal(item.valor) * Convert.ToInt32(ele.cantidad)) / 100;
+
                                 var impuesto = res.CreateElement("impuesto");
 
                                 var codigo = res.CreateElement("codigo");
@@ -1868,7 +1872,7 @@ namespace AtisCode.Aplicacion
                                 impuesto.AppendChild(baseImponible);
 
                                 var valor = res.CreateElement("valor");
-                                valor.InnerText = item.valor;
+                                valor.InnerText = totalValorImpuesto.ToString().Replace(",", ".");
                                 impuesto.AppendChild(valor);
 
                                 impuestos.AppendChild(impuesto);
