@@ -1227,8 +1227,10 @@ namespace AtisCode.Aplicacion
                     var cadenas = wrapper.NotaCredito.Detalle.Idfactura.Split('-');
                     var codFact = cadenas.Count() > 2 ? cadenas[2] : "000000001";
                     var noFact = wrapper.NotaCredito.Detalle.Idfactura.Replace("-", "").Trim();
+
                     //tomar la factura activa
                     var fact = _ctx.FACHIS.FirstOrDefault(t => t.FHFactura == noFact && t.FHEstado == "ACT");
+
                     if (fact != null)
                     {
                         var cliente = _ctx.CXCDIR.FirstOrDefault(t => t.Ruc == fact.FHRuc);
@@ -1389,8 +1391,10 @@ namespace AtisCode.Aplicacion
                     var cadenas = wrapper.NotaCredito.Detalle.Idfactura.Split('-');
                     var codFact = cadenas.Count() > 2 ? cadenas[2] : "000000001";
                     var noFact = wrapper.NotaCredito.Detalle.Idfactura.Replace("-", "").Trim();
+
                     //tomar la factura activa
-                    var fact = _ctx.FACHIS.FirstOrDefault(t => t.FHFactura == noFact && t.FHEstado == "ACT");
+                    var fact = _ctx.FACHIS.FirstOrDefault(t => t.FHFactura == noFact && t.FHEstado == "ACT"); 
+
                     if (fact != null)
                     {
                         var cliente = _ctx.CXCDIR.FirstOrDefault(t => t.Ruc == fact.FHRuc);
@@ -1412,7 +1416,7 @@ namespace AtisCode.Aplicacion
                         { "Telefono", !string.IsNullOrEmpty(cliente.Telef1)?cliente.Telef1:ConfigurationManager.AppSettings["Telefono"].ToString()},
                         { "Vendedor", ConfigurationManager.AppSettings["VendedorSeccion"].ToString()},
                         { "Clave", cliente.Ruc},
-                        { "UGE",ConfigurationManager.AppSettings["UGE"]},
+                        { "UGE",ConfigurationManager.AppSettings["UGE"]}, 
                         { "Comentario","DESCUENTO"},
                          // Nuevo
                         { "NoOp","VENTAS"},
