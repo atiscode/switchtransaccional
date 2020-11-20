@@ -34,7 +34,7 @@ namespace AtisCode.Aplicacion
     }
     public partial class Cliente
     {
-        [Required]
+        //[Required]
         public string CodigoCliente { get; set; }
         [Required]
         public string NombreCliente { get; set; }
