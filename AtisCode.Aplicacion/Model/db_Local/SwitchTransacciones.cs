@@ -42,6 +42,8 @@ namespace AtisCode.Aplicacion.Model.db_Local
         public string Bodega { get; set; }
         public string Tipo { get; set; }
         public string Status { get; set; }
+        public Nullable<System.DateTime> StartControlDayTransactions { get; set; }
+        public Nullable<System.DateTime> FinishControlDayTransactions { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmpresaSwitchTransacciones> EmpresaSwitchTransacciones { get; set; }

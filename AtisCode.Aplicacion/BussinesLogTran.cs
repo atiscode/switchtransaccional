@@ -88,12 +88,26 @@ namespace AtisCode.Aplicacion
             }
         }
 
+        public bool IsValidDateInRange(string channel)
+        {
+            try
+            {
+                var informationChannel = model.ConsultarConfiguracionPrincipal(channel).FirstOrDefault();
+                return DateTime.Now.Day >= informationChannel.StartControlDayTransactions.Value.Day && DateTime.Now.Day <= informationChannel.FinishControlDayTransactions.Value.Day;
+            }
+            catch (Exception ex)
+            {
+                Tools.RegisterException(ex, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return false;
+            }
+        }
+
         public async Task<bool> ExistSequentialAtisLogEnqueue(string secuencial, string tipo, string segmento)
         {
             string numberDocument = string.Empty;
             try
             {
-                bool exist = await model.AtisQueueTransactions.AnyAsync(t => t.Sequential == secuencial   && t.TypeDocument == tipo && t.Channel == segmento);
+                bool exist = await model.AtisQueueTransactions.AnyAsync(t => t.Sequential == secuencial && t.TypeDocument == tipo && t.Channel == segmento);
 
                 return exist;
             }

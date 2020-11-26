@@ -60,6 +60,7 @@
           <Property Name="Status" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Ready" Type="bit" Nullable="false" />
           <Property Name="ExceptionsService" Type="varchar(max)" />
+          <Property Name="TryResponseService" Type="nvarchar(max)" />
           <Property Name="RequestXML" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="AtisSafiCredenciales">
@@ -124,6 +125,8 @@
           <Property Name="Bodega" Type="nvarchar" MaxLength="10" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="10" />
           <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="StartControlDayTransactions" Type="datetime" />
+          <Property Name="FinishControlDayTransactions" Type="datetime" />
         </EntityType>
         <Association Name="FK_AtisAPIConfiguracionEntorno_AtisAplicacion">
           <End Role="AtisAplicacion" Type="Self.AtisAplicacion" Multiplicity="1" />
@@ -298,6 +301,8 @@
           <Property Type="Int64" Name="IdSwitchTransacciones" Nullable="false" />
           <Property Type="Int32" Name="Estado" Nullable="false" />
           <Property Type="Int32" Name="EmpresaSwitchTransaccionesID" Nullable="false" />
+          <Property Type="DateTime" Name="StartControlDayTransactions" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FinishControlDayTransactions" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="ElancesWebServicesAmbienteInfo">
           <Property Type="Int32" Name="AtisAPIConfiguracionEntornoID" Nullable="false" />
@@ -415,6 +420,8 @@
           <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EmpresaSwitchTransacciones" Relationship="SwitchAtiscodeModel.FK_EmpresaSwitchTransacciones_SwitchTransacciones" FromRole="SwitchTransacciones" ToRole="EmpresaSwitchTransacciones" />
+          <Property Name="StartControlDayTransactions" Type="DateTime" Precision="3" />
+          <Property Name="FinishControlDayTransactions" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_AtisAPIConfiguracionEntorno_AtisAplicacion">
           <End Type="SwitchAtiscodeModel.AtisAplicacion" Role="AtisAplicacion" Multiplicity="1" />
@@ -534,6 +541,7 @@
           <Property Name="ExceptionsService" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TypeDocument" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="RequestXML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TryResponseService" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -582,6 +590,8 @@
                 <ScalarProperty Name="IdSwitchTransacciones" ColumnName="IdSwitchTransacciones" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="EmpresaSwitchTransaccionesID" ColumnName="EmpresaSwitchTransaccionesID" />
+                <ScalarProperty Name="StartControlDayTransactions" ColumnName="StartControlDayTransactions" />
+                <ScalarProperty Name="FinishControlDayTransactions" ColumnName="FinishControlDayTransactions" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -683,6 +693,8 @@
           <EntitySetMapping Name="SwitchTransacciones">
             <EntityTypeMapping TypeName="SwitchAtiscodeModel.SwitchTransacciones">
               <MappingFragment StoreEntitySet="SwitchTransacciones">
+                <ScalarProperty Name="FinishControlDayTransactions" ColumnName="FinishControlDayTransactions" />
+                <ScalarProperty Name="StartControlDayTransactions" ColumnName="StartControlDayTransactions" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Bodega" ColumnName="Bodega" />
@@ -775,6 +787,7 @@
           <EntitySetMapping Name="AtisQueueTransactions">
             <EntityTypeMapping TypeName="SwitchAtiscodeModel.AtisQueueTransactions">
               <MappingFragment StoreEntitySet="AtisQueueTransactions">
+                <ScalarProperty Name="TryResponseService" ColumnName="TryResponseService" />
                 <ScalarProperty Name="RequestXML" ColumnName="RequestXML" />
                 <ScalarProperty Name="TypeDocument" ColumnName="TypeDocument" />
                 <ScalarProperty Name="ExceptionsService" ColumnName="ExceptionsService" />

@@ -25,5 +25,6 @@ namespace AtisCode.Aplicacion.Model.db_Local
         public string ExceptionsService { get; set; }
         public string TypeDocument { get; set; }
         public string RequestXML { get; set; }
+        public string TryResponseService { get; set; }
     }
 }

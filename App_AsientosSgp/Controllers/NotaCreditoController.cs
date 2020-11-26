@@ -113,6 +113,33 @@ namespace App_Mundial_Miles.Controllers
             try
             {
                 HttpResponseMessage response = new HttpResponseMessage();
+
+                #region Valid Range Date Channel Transactions
+                bool isRangeValid = modelLog.IsValidDateInRange(segmento);
+                if (!isRangeValid && !wrapper.EsCargaDocumentos)
+                {
+                    //ERROR PRODUCTO GIFT CARD
+                    trackingLog = new ResponseSwitchAPI() { mensaje = "Invalid range date transaction. Try again later.", codigoRetorno = "400", estado = "ERROR", numeroDocumento = string.Empty };
+                    //Save log in AtisLogTran
+                    await modelLog.AddAsync(new AtisLogTran
+                    {
+                        TipoSolicitud = null,
+                        NumeroDocumento = string.Empty,
+                        TramaEntrada = trama,
+                        FechaEntrada = startProcess,
+                        Estado = "ERROR",
+                        TramaRespuesta = JsonConvert.SerializeObject(trackingLog),
+                        FechaSalida = DateTime.Now,
+                        Tipo = TipoDocumento,
+                        Secuencial = wrapper?.NotaCredito.Detalle?.Secuencial ?? "0",
+                        Canal = segmento,
+                    });
+
+                    response = Request.CreateResponse(HttpStatusCode.BadRequest, trackingLog);
+                    return response;
+                }
+                #endregion
+
                 //Save log in AtisLogTran
                 await modelLog.AddAsync(new AtisLogTran
                 {

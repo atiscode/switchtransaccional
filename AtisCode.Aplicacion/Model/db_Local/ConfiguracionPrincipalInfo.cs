@@ -51,5 +51,7 @@ namespace AtisCode.Aplicacion.Model.db_Local
         public long IdSwitchTransacciones { get; set; }
         public int Estado { get; set; }
         public int EmpresaSwitchTransaccionesID { get; set; }
+        public Nullable<System.DateTime> StartControlDayTransactions { get; set; }
+        public Nullable<System.DateTime> FinishControlDayTransactions { get; set; }
     }
 }
