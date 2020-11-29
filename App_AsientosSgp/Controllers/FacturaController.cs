@@ -186,7 +186,7 @@ namespace App_Mundial_Miles.Controllers
                         Secuencial = wrapper?.Detalle?.Factura?.Secuencial ?? "0",
                         Canal = segmento,
                     });
-
+                    await EnqueueTransaction(trackingLog, string.Empty, segmento, wrapper?.Detalle?.Factura?.Secuencial, startProcess, trama);
                     response = Request.CreateResponse(HttpStatusCode.BadRequest, trackingLog);
                     return response;
                 }
