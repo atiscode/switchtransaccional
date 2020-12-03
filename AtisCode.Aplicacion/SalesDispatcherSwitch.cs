@@ -990,7 +990,7 @@ namespace AtisCode.Aplicacion
                                 codigoAuxiliar = ConfigurationManager.AppSettings["codProducto"],
                                 descripcion = ConfigurationManager.AppSettings["nombProducto"],
                                 cantidad = ele.Cantidad.ToString(),
-                                precioUnitario = punit.ToString("N2").Replace(".", "").Replace(",", "."),
+                                precioUnitario = punit.ToString("N4").Replace(".", "").Replace(",", "."), //N4
                                 descuento = "0.00",
                                 precioTotalSinImpuesto = ele.SubTotal.ToString("N2").Replace(".", "").Replace(",", "."), // (punit * ele.Cantidad).ToString("N2").Replace(".", "").Replace(",", "."),
                                 detallesAdicionales = detAdd,

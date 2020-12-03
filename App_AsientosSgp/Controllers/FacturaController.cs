@@ -58,6 +58,19 @@ namespace App_Mundial_Miles.Controllers
                     if (wrapper?.Cabecera == null || wrapper?.Detalle == null)
                         return "Verificar que la trama corresponda al tipo de documento factura.";
 
+                    if(wrapper.Detalle.Factura  != null)
+                    {
+                        if(wrapper.Cabecera.Cliente.Segmento == "VIAJES" || wrapper.Cabecera.Cliente.Segmento == "FEE PROCESAMIENTO")
+                        {
+                            foreach (var item in wrapper.Detalle.Factura.DetalleFactura)
+                            {
+                                item.CodigoCategoria = string.IsNullOrEmpty(item.CodigoCategoria) ? "SIN CATEGORIA" : item.CodigoCategoria;
+                                item.RUCProveedor = string.IsNullOrEmpty(item.RUCProveedor) ? "SIN RUC PROVEEDOR" : item.RUCProveedor;
+                                item.Proveedor = string.IsNullOrEmpty(item.Proveedor) ? "SIN PROVEEDOR" : item.Proveedor;
+                            }
+                        }
+                    }
+
                     //Convertir todos los metodos de validacion en asincronos
                     List<string> errors = new List<string>();
 
